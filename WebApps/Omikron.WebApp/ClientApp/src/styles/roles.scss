@@ -1,0 +1,116 @@
+@import "variables";
+
+.role {
+    &.permissions {
+        ul,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .first-level {
+            display: flex;
+            flex-wrap: wrap;
+
+            > li {
+                margin: 10px 0;
+                font-weight: bolder;
+
+                > span {
+                    margin-bottom: 10px;
+                    display: block;
+                    color: black;
+                }
+            }
+        }
+
+        .second-level {
+            > li {
+                font-weight: normal;
+                margin-bottom: 5px;
+                border-bottom: 1px solid #ececec;
+                padding-bottom: 5px;
+                color: black;
+            }
+        }
+    }
+
+    &.interactive-view-container {
+        position: absolute;
+        z-index: 999998;
+        top: -20px;
+        right: -20px;
+
+        .btn {
+            &.icon {
+                float: none;
+                background: $color-app-orange;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $color-login-primary-text-button;
+                font-weight: 700;
+                font-size: 12px;
+                padding: 0;
+
+                > i {
+                    font-size: 25px !important;
+                    color: $color-login-primary-text-button;
+                    margin: 0;
+                    padding: 10px;
+                    float: none;
+                }
+            }
+        }
+    }
+}
+
+.interactive-role-management {
+    .swal2-container {
+        z-index: 999999;
+    }
+
+    .interactive-button {
+        z-index: 999999;
+        position: relative;
+        padding: 10px 7px 10px 10px !important;
+    }
+
+    .interactive-mode-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #000000ba;
+        top: 0;
+        left: 0;
+        z-index: 99999;
+    }
+
+    .action-button a {
+        position: absolute;
+        display: none;
+    }
+
+    .action-button .fa-pencil{
+        display: none;
+    }
+
+    .side-bar {
+        z-index: 999999;
+
+        .interactive-mode-overlay {
+            position: absolute;
+        }
+
+        .menu {
+            > ul {
+                > li {
+                    > a {
+                        pointer-events: none !important;
+                    }
+                }
+            }
+        }
+    }
+}

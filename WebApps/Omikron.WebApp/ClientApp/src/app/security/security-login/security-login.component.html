@@ -1,0 +1,25 @@
+<body>
+    <div class="container-fluid position-absolute z-index-5">
+        <div class="row">
+            <div class="nav-rectangle nav-primary col"></div>
+            <div class="nav-rectangle nav-cyan col"></div>
+            <div class="nav-rectangle nav-yellow col"></div>
+            <div class="nav-rectangle nav-gray col"></div>
+            <div class="nav-rectangle nav-orange col"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid h-100">
+        <div class="row">
+            <app-security-navigation class="col-md-3 text-center"></app-security-navigation>
+
+            <div class="col-md-9">
+                <router-outlet *ngIf="tenant.isReadyForUse && !verification"></router-outlet>
+            </div>
+
+            <div *ngIf="!tenant.isReadyForUse" class="title-layout">
+                <h2>Ops!</h2>
+            </div>
+        </div>
+    </div>
+</body>

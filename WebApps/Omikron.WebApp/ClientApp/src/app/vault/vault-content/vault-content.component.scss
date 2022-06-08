@@ -1,0 +1,281 @@
+@import "../../../styles/abstracts/media";
+
+.accounts {
+    margin-top: 230px;
+
+    @include media-xs {
+        margin-top: 0px;
+    }
+
+    @include media-sm {
+        margin-top: 0px;
+    }
+
+    @include media-md {
+        margin-top: 0px;
+    }
+
+    h2 {
+        font-size: 21px;
+        color: #242424;
+        line-height: 150%;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1px;
+        @media (max-width: 600px) {
+            margin-top: 20px;
+        }
+    }
+
+    p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 150%;
+        color: #242424;
+        margin-bottom: 26px;
+    }
+
+
+
+    .border-bottom-radius-zero {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .re-authorise {
+        margin-top: -85px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        p {
+            font-size: 11px;
+            font-style: normal;
+            line-height: 20px;
+            font-weight: 400;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            @media (min-width: 768px) and (max-width: 991px)
+            {
+                padding: 5px;
+            }
+            i {
+                margin-left: 25px;
+                margin-right: 10px;
+                font-size: 20px;
+                vertical-align: middle;
+                @media (min-width: 768px) and (max-width: 991px)
+                {
+                    margin-left: 0px;
+                }
+                @media (min-width: 992px) and (max-width: 1199px){
+                    margin-left: 0px;
+                }
+            }
+        }
+    }
+    .re-authorise-warning {
+        background-color: #fff0de;
+        p {
+            color: #f26b1e;
+        }
+    }
+    .re-authorise-danger {
+        background-color: #ffdad6;
+        p {
+            color: #FF0000;
+        }
+    }
+}
+
+// properties component
+.assets {
+    h2 {
+        font-size: 21px;
+        color: #242424;
+        line-height: 150%;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1px;
+
+        @media (max-width: 600px) {
+            margin-top: 20px;
+        }
+    }
+
+    p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 150%;
+        color: #242424;
+        margin-bottom: 26px;
+    }
+
+    .cards {
+        margin-bottom: 30px;
+
+        @media (max-width: 600px) {
+            margin-bottom: 20px;
+        }
+
+        .box {
+            padding: 20px 20px 20px 26px;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-right: 1px solid #e4e4e7;
+            border-left: 1px solid #e4e4e7;
+            border-bottom: 1px solid #e4e4e7;
+
+            @media (min-width: 768px) and (max-width: 991px) {
+                padding: 10px;
+            }
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+                padding: 10px;
+            }
+
+            p {
+                font-style: normal;
+                padding-top: 10px;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 150%;
+                color: #afafc0;
+                margin-bottom: 0px;
+
+                strong {
+                    font-weight: 500;
+                    font-size: 28px;
+                    line-height: 150%;
+                    color: #242424;
+                    display: block;
+
+                    @media (min-width: 768px) and (max-width: 991px) {
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            h2 {
+                font-weight: 500;
+                color: #242424;
+                font-size: 16px;
+                line-height: 150%;
+                font-family: Poppins, sans-serif;
+                font-style: normal;
+
+                @media (min-width: 768px) and (max-width: 991px) {
+                    font-size: 14px;
+                }
+
+                @media (min-width: 992px) and (max-width: 1199px) {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .default-image{
+            @extend img;
+            object-fit: cover;
+        }
+    }
+}
+
+.card-box {
+    padding: 25px 0px 25px 25px;
+    margin-bottom: 85px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    height: 223px;
+    @media (max-width: 600px) {
+        margin-bottom: 20px;
+    }
+    @media (min-width: 768px) and (max-width: 991px)
+    {
+        min-height: 290px;
+        padding: 25px 0px 25px 10px;
+    }
+    @media (min-width: 992px) and (max-width: 1199px){
+        min-height: 290px;
+        padding: 25px 0px 25px 10px;
+    }
+
+    &::before {
+        background-color: #ffffff;
+        opacity: 0.21;
+        position: absolute;
+        left: 191px;
+        top: -269px;
+        height: 540px;
+        width: 540px;
+        content: "";
+        border-radius: 300px;
+    }
+
+    &::after {
+        background-color: #ffffff;
+        opacity: 0.21;
+        height: 402px;
+        width: 402px;
+        top: -200px;
+        left: 261px;
+        content: "";
+        position: absolute;
+        border-radius: 202px;
+    }
+
+    p {
+        color: #ffffff;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 150%;
+        margin-bottom: 0px;
+
+        strong {
+            display: block;
+            color: #ffffff;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 150%;
+        }
+    }
+    img {
+        max-width: 192px;
+        max-height: 66px;
+        margin-bottom: 30px;
+        @media (min-width: 768px) and (max-width: 991px)
+        {
+            margin-left: 0px;
+            width: 100%;
+        }
+    }
+
+    img.no-margin{
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    .balance {
+        p {
+            padding-top: 20px;
+            text-transform: uppercase;
+
+            strong {
+                font-size: 28px;
+                @media (min-width: 768px) and (max-width: 991px)
+                {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}

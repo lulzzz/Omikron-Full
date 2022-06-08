@@ -1,0 +1,7 @@
+<section class="delete-acc">
+    <h2>Remove Account</h2>
+    <p>By removing this account, all data relating to this account will be removed from OMIKRON</p>
+    <button (click)="closeModal()">Cancel</button>
+    <button class="keep-acc" [class.button-disabled]="buttonDisabled" (click)="revokeConsent(true)">Archive</button>
+    <button class="keep-acc" [class.button-disabled]="buttonDisabled" (click)="revokeConsent()">Delete</button>
+</section>

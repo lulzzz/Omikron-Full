@@ -1,0 +1,80 @@
+<section class="pop-up-window-add-property">
+    <button class="exit"><span class="ri-close-line" (click)="closeModal()"></span></button>
+    <h2>Edit Investment</h2>
+    <div class="links">
+        <div class="add-new-form">
+            <form [formGroup]="formEditInvestment">
+
+                <div class="form-group">
+                    <label for="investmentName" class="font-12px white-50 font-weight-600">Investment name</label>
+                    <div class="input-wrapper"
+                        [ngClass]="{'has-error': validation.displayMessage['investmentName'], 'show-success': formEditInvestment.controls['investmentName'].valid}">
+                        <input id="investmentName" formControlName="investmentName" class="form-control line-height-20"
+                            type="text">
+                        <span>{{ validation.displayMessage['investmentName'] }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="category" class="font-12px white-50 font-weight-600">Category</label>
+                    <div class="input-wrapper"
+                        [ngClass]="{'has-error': validation.displayMessage['category'], 'show-success': formEditInvestment.controls['category'].valid}">
+                        <input id="category" formControlName="category" class="form-control line-height-20" type="text">
+                        <span>{{ validation.displayMessage['category'] }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tickerCode" class="font-12px white-50 font-weight-600">Ticker code</label>
+                    <div class="input-wrapper"
+                        [ngClass]="{'has-error': validation.displayMessage['tickerCode'], 'show-success': formEditInvestment.controls['tickerCode'].valid}">
+                        <input id="tickerCode" formControlName="tickerCode" class="form-control line-height-20"
+                            type="text">
+                        <span>{{ validation.displayMessage['tickerCode'] }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="unitPrice" class="font-12px white-50 font-weight-600">Unit price</label>
+                    <div class="input-wrapper"
+                        [ngClass]="{'has-error': validation.displayMessage['unitPrice'], 'show-success': formEditInvestment.controls['unitPrice'].valid}">
+                        <input id="unitPrice" formControlName="unitPrice" class="form-control line-height-20"
+                            type="number">
+                        <span>{{ validation.displayMessage['unitPrice'] }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity" class="font-12px white-50 font-weight-600">Quantity</label>
+                    <div class="input-wrapper"
+                        [ngClass]="{'has-error': validation.displayMessage['quantity'], 'show-success': formEditInvestment.controls['quantity'].valid}">
+                        <input id="quantity" formControlName="quantity" class="form-control line-height-20"
+                            type="number">
+                        <span>{{ validation.displayMessage['quantity'] }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="totalValue" class="font-12px white-50 font-weight-600">Total value</label>
+                    <div class="input-wrapper"
+                        [ngClass]="{'has-error': validation.displayMessage['totalValue'], 'show-success': formEditInvestment.controls['totalValue'].valid}">
+                        <input id="totalValue" formControlName="totalValue" class="form-control line-height-20" readonly
+                            value="{{ formEditInvestment.controls['unitPrice'].value * formEditInvestment.controls['quantity'].value}}"
+                            type="number">
+                        <span>{{ validation.displayMessage['totalValue'] }}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <mat-checkbox formControlName="automaticallyRevalueInvestment"
+                        (change)="automaticallyRevalueInvestment = !automaticallyRevalueInvestment">
+                        Automatically re-value my investment every month</mat-checkbox>
+                </div>
+
+                <div>
+                    <button class="back-button" (click)="backToInvestmentDetails()">Back</button>
+                    <button class="next-button" (click)="updateInvestment()">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

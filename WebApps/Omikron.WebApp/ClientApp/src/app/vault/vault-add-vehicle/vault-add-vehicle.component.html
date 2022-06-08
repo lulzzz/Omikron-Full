@@ -1,0 +1,222 @@
+<section class="pop-up-window-add-property">
+    <button class="exit"><i class="ri-close-line" (click)="closeModal()"></i></button>
+    <h2>Add Vehicle</h2>
+    <div class="top-navigation">
+        <div class="d-flex justify-content-md-center">
+            <div class="col col-lg-2">
+                <button>
+                    <img (click)="showStepOne()" src="../../../images/Vault/vehicle-fill.svg" alt="Vehicle icon">
+                    <p class="dark-text">Vehicle</p>
+                </button>
+            </div>
+            <div class="col-md-auto">
+            </div>
+            <div class="col col-lg-2">
+                <button class="finance-icon" (click)="showStepTwo()">
+                    <img class="finance-icon" [hidden]="!stepOneHidden" src="../../../images/Vault/bank-card-line.svg"
+                        alt="Active finance Icon">
+                    <img class="not-active" [hidden]="stepOneHidden" src="../../../images/Vault/bank-card-line-grey.svg"
+                        alt="Inactive Finance icon">
+                    <p [ngClass]="stepOneHidden ? 'dark-text' : ''">Finance</p>
+                </button>
+            </div>
+            <div class="col-md-auto">
+            </div>
+            <div class="col col-lg-2">
+                <button class="photo-icon" (click)="showStepThree()">
+                    <img [hidden]="stepThreeHidden" src="../../../images/Vault/image-line.svg" alt="Active photo icon">
+                    <img class="not-active" src="../../../images/Vault/image-line-grey.svg" alt="Inactive photo"
+                        [hidden]="!stepThreeHidden">
+                    <p [ngClass]="!stepThreeHidden  ? 'dark-text' : ''">Photo</p>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="links">
+        <div class="add-new-form">
+            <form [formGroup]="formAddVehicle">
+
+                <fieldset [hidden]="stepOneHidden">
+                    <div class="form-group">
+                        <label for="vehicleName" class="font-12px white-50 font-weight-600">Vehicle Name</label>
+                        <div class="input-wrapper"
+                            [ngClass]="{'has-error': validation.displayMessage['vehicleName'], 'show-success': formAddVehicle.controls['vehicleName'].valid}">
+                            <input id="vehicleName" formControlName="vehicleName" class="form-control line-height-20"
+                                type="text">
+                            <span>{{ validation.displayMessage['vehicleName'] }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registration" class="font-12px white-50 font-weight-600">Registration</label>
+                        <div class="input-wrapper"
+                            [ngClass]="{'has-error': validation.displayMessage['registration'], 'show-success': formAddVehicle.controls['registration'].valid}">
+                            <input id="registration" formControlName="registration" class="form-control line-height-20"
+                                type="text">
+                            <span>{{ validation.displayMessage['registration'] }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mileage" class="font-12px white-50 font-weight-600">Mileage</label>
+                        <div class="input-wrapper value-vehicle-wrapper no-icon"
+                            [ngClass]="{'has-error': validation.displayMessage['mileage']}">
+                            <input formControlName="mileage" class="form-control line-height-20" name="mileage"
+                                id="mileage" type="number">
+                            <button class="input-group-text value-vehicle-wrapper-button" (click)="valueMyVehicle()"
+                                [disabled]="vehicleValueProcessing">
+                                <p class="font-14px" *ngIf="!vehicleValueProcessing">Value My Vehicle</p>
+                                <p class="loading-spinner-circle" *ngIf="vehicleValueProcessing"></p>
+                            </button>
+                            <span>{{ validation.displayMessage['mileage'] }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicleValue" class="font-12px white-50 font-weight-600">Vehicle Value</label>
+                        <div class="input-wrapper"
+                            [ngClass]="{'has-error': validation.displayMessage['vehicleValue'], 'show-success': formAddVehicle.controls['vehicleValue'].valid}">
+                            <input id="vehicleValue" formControlName="vehicleValue" class="form-control line-height-20"
+                                type="number">
+                            <span>{{ validation.displayMessage['vehicleValue'] }}</span>
+                        </div>
+                    </div>
+                    <p *ngIf="vehicleValueReturned">Vehicles are valued based on a private sale value. This is generally
+                        higher than trade value, but lower than retail value.</p>
+                    <mat-checkbox formControlName="automaticallyReValueVehicle"
+                        (change)="automaticallyReValueVehicle = !automaticallyReValueVehicle">
+                        Automatically re-value my vehicle every month</mat-checkbox>
+
+                    <div class="form-group">
+                        <label for="purchaseValue">Purchase Value</label>
+                        <div class="input-wrapper"
+                            [ngClass]="{'has-error': validation.displayMessage['purchaseDate'], 'show-success': formAddVehicle.controls['purchaseValue'].valid && formAddVehicle.controls['purchaseValue'].dirty}">
+                            <input id="purchaseValue" formControlName="purchaseValue" type="number" autocomplete="off">
+                            <span>{{ validation.displayMessage['purchaseDate'] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purchaseDate">Purchase Date</label>
+                        <div class="input-wrapper"
+                            [ngClass]="{'has-error': validation.displayMessage['purchaseValue'], 'show-success': formAddVehicle.controls['purchaseDate'].valid && formAddVehicle.controls['purchaseDate'].dirty}">
+                            <input class="date-input-validation" id="purchaseDate" formControlName="purchaseDate"
+                                type="date" autocomplete="off">
+                            <span>{{ validation.displayMessage['purchaseValue'] }}</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button class="back-button" (click)="showAddAccountModal()">Back</button>
+                        <button class="next-button" (click)="showStepTwo()">Next</button>
+                    </div>
+                </fieldset>
+
+                <fieldset [hidden]="stepTwoHidden" class="text-center">
+                    <p>Please tell us if you have a finance agreement on your vehicle?</p>
+                    <button class="switch-button" (click)="showAddNewFinanceAgreement()"
+                        [class.active]="linkExistingHidden">Add New</button>
+                    <button class="switch-button" (click)="showLinkExistingFinanceAgreement()"
+                        [class.active]="addNewHidden">Link
+                        Existing</button>
+
+                    <fieldset [hidden]="addNewHidden">
+                        <div class="form-group">
+                            <label for="financeAgreementName">Finance Agreement Name</label>
+                            <div class="input-wrapper"
+                                [ngClass]="{'has-error': validation.displayMessage['financeAgreementName'], 'show-success': formAddVehicle.controls['financeAgreementName'].value.length > 0}">
+                                <input id="financeAgreementName" formControlName="financeAgreementName" type="text"
+                                    autocomplete="off">
+                                <span>{{ validation.displayMessage['financeAgreementName'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newFinanceBalance">Finance Balance</label>
+                            <div class="input-wrapper"
+                                [ngClass]="{'has-error': validation.displayMessage['newFinanceBalance'], 'show-success': formAddVehicle.controls['newFinanceBalance'].valid}">
+                                <input id="newFinanceBalance" formControlName="newFinanceBalance" type="number"
+                                    autocomplete="off">
+                                <span>{{ validation.displayMessage['newFinanceBalance'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="openBalance">Open Account Balance</label>
+                            <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['openDate'], 'show-success': formAddVehicle.controls['openBalance'].valid && formAddVehicle.controls['openBalance'].dirty}">
+                                <input id="openBalance" formControlName="openBalance" type="number" autocomplete="off">
+                                <span>{{ validation.displayMessage['openDate'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="openDate">Account Open Date</label>
+                            <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['openBalance'], 'show-success': formAddVehicle.controls['openDate'].valid && formAddVehicle.controls['openDate'].dirty}">
+                                <input class="date-input-validation" id="openDate" formControlName="openDate" type="date" autocomplete="off">
+                                <span>{{ validation.displayMessage['openBalance'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newFinanceBalance">Reference</label>
+                            <div class="input-wrapper"
+                                [ngClass]="{'has-error': validation.displayMessage['reference'], 'show-success': formAddVehicle.controls['reference'].value.length > 0}">
+                                <input id="reference" formControlName="reference" autocomplete="off">
+                                <span>{{ validation.displayMessage['reference'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Notes</label>
+                            <div class="input-wrapper">
+                                <textarea class="notes-input" id="notes" formControlName="notes" type="text"
+                                    autocomplete="off"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset [hidden]="linkExistingHidden">
+                        <div class="form-group">
+                            <label for="searchFinanceAgreement">Search Finance Agreement</label>
+                            <div class="input-wrapper">
+                                <input (click)="showLoans()" id="searchFinanceAgreement"
+                                    formControlName="searchFinanceAgreement" type="name"
+                                    (input)="search(formAddVehicle.controls['searchFinanceAgreement'].value)"
+                                    autocomplete="off">
+                                <div class="list-wrapper">
+                                    <ul class="list-group" [hidden]="hideLoans">
+                                        <li class="list-group-item" (click)="selectLoan(loan)"
+                                            *ngFor="let loan of loansFiltered">{{loan.name}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="existingFinanceBalance">Finance Balance</label>
+                            <div class="input-wrapper">
+                                <input disabled id="existingFinanceBalance" formControlName="existingFinanceBalance"
+                                    type="text" autocomplete="off">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <button class="back-button" (click)="showStepOne()">Back</button>
+                    <button class="next-button step-two-next-button" (click)="showStepThree()">Next</button>
+
+                    <div class="skip" (click)="showStepThree()">
+                        <a>Skip this Step</a>
+                    </div>
+                </fieldset>
+
+                <fieldset [hidden]="stepThreeHidden">
+                    <div class="form-group">
+                        <app-vault-upload-picture (sendPhoto)="getPhoto($event)"></app-vault-upload-picture>
+                    </div>
+
+                    <div>
+                        <button class="back-button" (click)="showStepTwo()">Back</button>
+                        <button class="next-button" (click)="addVehicle()">Add to Vault</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>

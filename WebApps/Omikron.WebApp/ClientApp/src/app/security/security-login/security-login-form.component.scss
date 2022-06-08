@@ -1,0 +1,103 @@
+@import "../../../styles/abstracts/media";
+
+.form-sign-in {
+    position: relative;
+    width: 100%;
+    left: 20%;
+    padding: 150px 0 100px 0;
+    max-width: 464px;
+
+    @include media-xs{
+        left: 0;
+        padding: 150px 0 34px 0;
+    }
+    @include media-sm{
+        left: 0;
+        margin: 0 auto;
+    }
+    @include media-md{
+        left: 0;
+        margin: 0 auto;
+    }
+    .remember-me-checkbox {
+        margin-bottom: 10px;
+    }
+
+}
+
+input {
+    background: rgba(255, 255, 255, 0.16);
+    border: none;
+    padding: 14px 16px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+
+    &:focus {
+        @extend input;
+        border: 1px solid white !important;
+    }
+
+    &:hover {
+        @extend input;
+        background: rgba(255, 255, 255, 0.24);
+    }
+}
+
+.welcome-text {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+}
+
+.background-color {
+    background-color: rgba(18, 18, 18, 0.3) !important;
+}
+
+form {
+    padding-top: 50px;
+}
+
+.logo {
+    position: relative;
+    width: 140px;
+    height: 42px;
+    margin-top: 80px;
+}
+
+.password-wrapper-button {
+    color: #afafc0;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    right: 0px;
+    top: 8px;
+}
+
+.password-wrapper {
+    &.has-error {
+        &:before {
+            content: "" !important;
+        }
+    }
+
+    input {
+        width: 100%;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #606169 inset !important;
+}
+
+@-webkit-keyframes autofill {
+    0%,
+    100% {
+        color: #666;
+        background: transparent;
+    }
+}

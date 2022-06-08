@@ -1,0 +1,230 @@
+@import "variables";
+
+a {
+    &.primary {
+        color: $color-link-general !important;
+    }
+
+    &:hover {
+        text-decoration: unset !important;
+    }
+}
+
+.tooltip {
+    z-index: 9999999;
+}
+
+input,
+button {
+    outline: unset !important;
+
+    &:active,
+    &:hover,
+    &:focus {
+        outline: unset !important;
+        box-shadow: unset !important;
+    }
+}
+
+input,
+textarea {
+    &.form-control {
+        border-color: gainsboro !important;
+
+        &:valid {
+            border-color: gainsboro !important;
+        }
+
+        &:focus {
+            border-color: $color-app-orange !important;
+        }
+    }
+}
+
+.btn {
+    border-radius: $border-radius;
+    font-size: 15px;
+    font-weight: 700;
+    overflow: auto;
+    cursor: pointer;
+
+    > i {
+        font-size: 20px;
+        margin-right: 5px;
+        margin-top: 2px;
+        float: left;
+    }
+
+    &.only-icon {
+        > i {
+            margin: 0;
+            font-size: 30px;
+            float: unset !important;
+        }
+    }
+
+    &.btn-primary {
+        border: $color-app-orange;
+        background: $color-app-orange;
+
+        &:active {
+            border: $color-app-orange !important;
+            background: $color-app-orange !important;
+        }
+
+        &:hover {
+            border: $color-primary-button-hover !important;
+            background: $color-primary-button-hover !important;
+        }
+    }
+
+    &.btn-secondary {
+        border: $color-app-dark-blue;
+        background: $color-app-dark-blue;
+
+        &:active {
+            border: $color-app-dark-blue !important;
+            background: $color-app-dark-blue !important;
+        }
+    }
+
+    &.btn-light {
+        &.text-muted {
+            color: $color-grey-label-muted;
+        }
+    }
+}
+
+.table {
+    &.table-striped {
+        thead {
+            th {
+                border: 0 !important;
+            }
+        }
+
+        tbody {
+            tr {
+                background-color: rgb(248, 249, 250);
+                td {
+                    vertical-align: middle;
+                }
+
+                &:nth-of-type(odd) {
+                    background-color: rgba(0, 0, 0, 0.05) !important;
+                }
+            }
+        }
+    }
+}
+
+.badge {
+    background: unset !important;
+    color: $color-app-black;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+
+    > .circle {
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+    }
+
+    &.badge-success {
+        > .circle {
+            background-color: $color-success-green;
+        }
+    }
+
+    &.badge-success {
+        > .circle {
+            background-color: $color-success-green;
+        }
+    }
+
+    &.badge-danger {
+        > .circle {
+            background-color: $color-danger-red;
+        }
+    }
+
+    &.badge-warning {
+        > .circle {
+            background-color: $color-warning-orange;
+        }
+    }
+
+    &.badge-primary {
+        > .circle {
+            background-color: $color-info-blue;
+        }
+    }
+}
+
+.date-range-picker {
+    .popover {
+        max-width: 530px;
+    }
+    .popover-header {
+        padding: 15px;
+        background-color: $color-app-dark-blue;
+        color: white;
+    }
+
+    .bs-popover-auto[x-placement^="bottom"] > .arrow::after,
+    .bs-popover-bottom > .arrow::after {
+        border-bottom-color:$color-app-dark-blue;
+    }
+
+    .date-picker {
+        .md-drppicker {
+            border-radius: 0;
+            padding: 0;
+            margin-top: 0;
+            box-shadow: unset;
+
+            .buttons {
+                .btn {
+                    border-radius: $border-radius !important;
+                    font-size: 15px !important;
+                    font-weight: 700 !important;
+                    overflow: auto !important;
+                    border: $color-app-orange !important;
+                    background:$color-app-orange !important;
+                    padding: 10px 5px !important;
+                    box-shadow: unset !important;
+                    color: $color-login-primary-text-button !important;
+                    transition: unset !important;
+                    line-height: unset !important;
+                    width: 100%;
+                    margin-top: 10px;
+
+                    &::before {
+                        content: none !important;
+                    }
+                }
+            }
+        }
+        .md-drppicker td.active,
+        .md-drppicker td.active:hover {
+            background-color: $color-app-orange !important;
+        }
+
+        .md-drppicker td.in-range {
+            background-color: $color-bg-muted;
+        }
+    }
+}
+
+.modal-content {
+    background-color: transparent;
+    border: none;
+}
+
+.card-title, .card-text {
+    margin-bottom: .75rem;
+    color: $color-app-orange
+  }
+

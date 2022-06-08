@@ -1,0 +1,13 @@
+.center-div{
+    position: relative;
+    width: 100%;
+    margin-left: 28.7%;
+    padding: 150px 0 100px 0;
+    max-width: 464px;
+}
+
+@media only screen and (max-width: 640px) {
+    .center-div{
+        margin-left: 0%;
+    }
+}

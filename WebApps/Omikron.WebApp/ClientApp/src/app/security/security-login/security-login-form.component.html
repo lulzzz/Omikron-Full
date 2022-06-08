@@ -1,0 +1,57 @@
+<form class="form-sign-in" [busyIndicator]="isBusy" [overlay]="true" [formGroup]="signInForm" autocomplete="off" (submit)="submit()"
+    *ngIf="!verification">
+    <div>
+        <div class="title-layout">
+            <h3 class="welcome-text">Welcome</h3>
+            <p class="white-60 font-18px">Enter your details to sign in</p>
+        </div>
+
+        <div class="mb-2 d-flex flex-column">
+
+            <div class="form-group">
+                <label for="loginEmail" class="font-12px white-50 font-weight-600">Email</label>
+                <div class="input-wrapper"
+                    [ngClass]="{'has-error': validation.displayMessage['userName'], 'show-success': signInForm.controls['userName'].valid}">
+                    <input id="loginEmail" formControlName="userName" type="email" class="form-control line-height-20"
+                        placeholder="Enter your email" autocomplete="off">
+                    <span>{{validation.displayMessage['userName']}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword" class="font-12px white-50 font-weight-600">Password</label>
+                <div class="input-group input-wrapper password-wrapper"
+                    [ngClass]="{'has-error': validation.displayMessage['password']}">
+                    <input id="loginPassword" formControlName="password" class="form-control line-height-20"
+                        [type]="passwordTextType ? 'text' : 'password'" placeholder="Enter your password">
+                    <span>{{validation.displayMessage['password']}}</span>
+                    <button class="input-group-text password-wrapper-button">
+                        <i [ngClass]="{ 'ri-eye-close-line': !passwordTextType, 'ri-eye-line': passwordTextType}"
+                            (click)="toggleFieldTextType()"></i>
+                    </button>
+                </div>
+            </div>
+
+            <mat-checkbox formControlName="rememberMeAt" class="remember-me-checkbox"
+                (change)="rememberMeAt = !rememberMeAt">Remember me ?</mat-checkbox>
+
+            <a routerLink="/authenticate/forgot-password" class="w-50">
+                <p class="font-14px font-weight-600 text-white">Forgotten Password</p>
+            </a>
+
+            <div class="border-bottom border-secondary mt-3 mb-3"></div>
+            <button type="submit" (click)="submit()" class="btn-submit"
+                [ngClass]="!signInForm.valid ? 'btn-submit' : 'btn-submit-activated'">Log in</button>
+
+            <p class="mt-4 text-center">Don't have an account?
+                <a class="font-weight-600 text-light" routerLink="/authenticate/register"> Sign up</a>
+            </p>
+        </div>
+    </div>
+</form>
+
+<app-confirm-token *ngIf="verification" [phoneNumber]="phoneNumber" (verify)="verifyPhoneNumber($event)"
+    (resend)="resendCode()" (back)="hideVerification()"></app-confirm-token>
+
+<button class="button-contact-us font-14px" (click)="contactUs()"><i class="ri-chat-smile-2-line icon-18px"></i>
+    Having a problem?<span class="font-weight-bold font-14px">Contact Us</span></button>

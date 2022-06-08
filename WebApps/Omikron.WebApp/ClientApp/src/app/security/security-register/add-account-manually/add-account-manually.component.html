@@ -1,0 +1,81 @@
+<section [ngClass]="darkTheme == true ? 'add-account-dark-theme' : 'add-account'">
+    <button class="exit" (click)="closeModal()" data-dismiss="modal" aria-label="Close"><i
+            class="ri-close-line"></i></button>
+    <h2>Add Manual Account</h2>
+    <form [formGroup]="addAccountForm" autocomplete="off">
+
+        <input autofocus="autofocus" hidden>
+
+        <div class="form-group">
+            <label for="type" class="font-12px gray-color font-weight-600">Title</label>
+            <div class="input-wrapper no-icon" [ngClass]="{'has-error': validation.displayMessage['type']}">
+                <select id="type" formControlName="type" type="type" class="form-control line-height-20" required>
+                    <option value="" disabled selected hidden>Please select</option>
+                    <option value=1>Current account</option>
+                    <option value=2>Savings</option>
+                    <option value=3>Credit card</option>
+                    <option value=4>Loan</option>
+                    <option value=5>Pension</option>
+                </select>
+                <span>{{ validation.displayMessage['type'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="referenceNumber">Reference Number</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['referenceNumber'], 'show-success': addAccountForm.controls['referenceNumber'].value?.length > 0}">
+                <input id="referenceNumber" formControlName="referenceNumber" type="text" autocomplete="off"
+                    placeholder="(optional)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Account Name</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['name'], 'show-success': addAccountForm.controls['name'].valid}">
+                <input id="name" formControlName="name" type="text" autocomplete="off">
+                <span>{{ validation.displayMessage['name'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="balance">Account Balance</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['balance'], 'show-success': addAccountForm.controls['balance'].valid}">
+                <input id="balance" formControlName="balance" type="number" autocomplete="off">
+                <span>{{ validation.displayMessage['balance'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="openBalance">Open Account Balance</label>
+            <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['openDate'], 'show-success': addAccountForm.controls['openBalance'].valid && addAccountForm.controls['openBalance'].dirty}">
+                <input id="openBalance" formControlName="openBalance" type="number" autocomplete="off">
+                <span>{{ validation.displayMessage['openDate'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="openDate">Account Open Date</label>
+            <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['openBalance'], 'show-success': addAccountForm.controls['openDate'].valid && addAccountForm.controls['openDate'].dirty}">
+                <input class="date-input-validation" id="openDate" formControlName="openDate" type="date" autocomplete="off">
+                <span>{{ validation.displayMessage['openBalance'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['notes'], 'show-success': addAccountForm.controls['notes'].value.length > 0}">
+                <textarea id="notes" formControlName="notes" class="pr-4" placeholder="(optional)">
+                </textarea>
+            </div>
+        </div>
+
+    </form>
+
+    <button class="cancel-button" (click)="back()">Back</button>
+    <button class="save-button" (click)="submit()" [ngClass]="{'save-button-activated': addAccountForm?.valid}"
+        [class.button-disabled]="buttonDisabled">Add to Vault</button>
+</section>

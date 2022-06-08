@@ -1,0 +1,21 @@
+<div *ngIf="errors?.length || control.invalid && form.submitted && (errorRequired || errorMinLength || errorMaxLength || errorPattern || email)"
+    class="error">
+    <div *ngIf="errorRequired && control.errors?.required">
+        {{errorRequired}}
+    </div>
+    <div *ngIf="errorMinLength && control.errors?.minlength">
+        {{errorMinLength}}
+    </div>
+    <div *ngIf="errorMaxLength && control.errors?.maxlength">
+        {{errorMaxLength}}
+    </div>
+    <div *ngIf="errorPattern && control.errors?.pattern">
+        {{errorPattern}}
+    </div>
+    <div *ngIf="email && control.errors?.email">
+        {{email}}
+    </div>
+    <div *ngFor="let error of errors">
+        {{error}}
+    </div>
+</div>

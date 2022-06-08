@@ -1,0 +1,8 @@
+<div class="analytics-date">
+    <p><button class="previous" [class.date-button-disabled]="currentMonth === minMonth && currentYear === minYear || selectedTimePeriod === 'Year' && currentYear === minYear"
+        (click)="previousDate()"><i
+            class="ri-arrow-left-s-line"></i></button><span *ngIf="selectedTimePeriod === 'Month'">{{months[currentMonth]}},</span>
+    {{currentYear}}<button (click)="nextDate()"
+        [class.date-button-disabled]="currentMonth === maxMonth && currentYear === maxYear || selectedTimePeriod === 'Year' && currentYear === maxYear" class="next"><i
+            class="ri-arrow-right-s-line"></i></button></p>
+</div>

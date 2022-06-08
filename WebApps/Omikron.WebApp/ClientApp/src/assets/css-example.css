@@ -1,0 +1,249 @@
+
+
+.authentication {
+    background-color: rgb(0, 153, 0);
+}
+
+.authentication .content-wrapper {
+    min-height: 100vh;
+    background: url(https://icp.global.bp.com/static/media/header-3.6dbca704.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.authentication .content-layout form.login {
+    width: 300px;
+    margin-top: -70px;
+}
+
+.authentication{
+    background-color: rgb(0, 153, 0);
+}
+
+.authentication a {
+    color: #3cb100;
+}
+
+input.form-control:focus, textarea.form-control:focus {
+    border-color: #5ebb00!important;
+}
+
+.authentication .btn-primary {
+    border-color: #3db100;
+    background-color: #5ebb00;
+    color: #f3ffec;
+}
+
+.authentication .btn-primary:hover {
+    border-color: #3db100;
+    background-color: #5ebb00;
+    color: #f3ffec;
+}
+
+.authentication .content-layout .title-layout>h2 {
+    color: #3ab000;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.authentication .logo{
+    width: unset !important;
+    margin-top: -141px !important;
+}
+
+.authentication .logo img {
+    width: 300px !important;
+}
+
+.authentication .content-layout .left {
+    display: flex;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
+.authentication .content-layout .left .content-text h1 {
+    width: 296px;
+}
+
+.authentication .content-layout .left.image {
+    background: url(https://image.prntscr.com/image/aZiKNzofT06V9LwK5_EE8g.png);
+    height: 500px;
+    background-repeat: space;
+    background-size: contain;
+}
+
+.authentication main>.container-app {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+}
+
+.authentication .content-layout {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-radius: 20px;
+    border: 5px solid #a2d503;
+}
+
+.authentication .content-text {
+    display: none !important
+}
+
+.authentication a.link {
+    color: #3bb100 !important;
+}
+
+.btn.btn-primary {
+    border: #3db100!important;
+    background: #45b300!important;
+}
+
+.btn.btn-primary:hover {
+    border: #3db100!important;
+    background: #45b300!important;
+}
+
+/* Top navigation bar */
+.theme.default .navigation.side-bar {
+    background-color: #ffffff;
+    border-right: 3px solid #28a745;
+}
+
+.theme.default .navigation.side-bar .menu>ul>li>a.active, .theme.default .navigation.side-bar .menu>ul>li>a:hover {
+    color: #effff2;
+    background: #28a745;
+}
+
+.theme.default .navigation.side-bar .menu>ul>li>a.active>i, .theme.default .navigation.side-bar .menu>ul>li>a:hover>i {
+    color: #effff2;
+}
+
+.theme.default .navigation.side-bar .menu>ul>li>a {
+    color: #28a745;
+}
+
+.theme.default .navigation.side-bar .menu>ul>li>a>i {
+    font-size: 35px;
+    color: #28a745;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px dashed #28a745;
+    border-radius: 0 !important;
+    margin-top: 0 !important;
+}
+
+.sub-navigation-title-bar {
+    margin-left: 110px;
+    padding-left: 35px!important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    box-shadow: unset !important;
+    background: #077220 !important;
+}
+
+.sub-navigation-title-bar>.title {
+    padding: 20px 26px;
+    font-weight: 700;
+    border-radius: 0;
+    color: #f6fff8;
+    background: #28a745 !important;
+    width: 1109px;
+    margin-left: -110px;
+}
+
+.text-primary-color {
+    color: #28a745;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 2px solid #28a745;
+    border-radius: 0 !important;
+    margin-top: -2px !important;
+}
+
+.users.list .card-columns .card .card-body .card-title {
+    color: #28a745;
+    margin: 0;
+    font-weight: 700;
+}
+
+.users.list .card-columns .card .card-body.action-bar a {
+    color: #28a745;
+}
+
+.users.roles .badge {
+    background-color: #28a745!important;
+    color: #ffffff!important;
+    margin-right: 5px;
+    padding: 10px 15px;
+    font-size: 12px;
+}
+
+a.primary {
+    color: #28a745!important;
+}
+
+.bg-light .content-wrapper{
+    background: url(http://www.robfe.com/wp-content/uploads/2012/07/redox_01.png);
+}
+
+.main-conent {
+    margin-top: 0;
+}
+
+.table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #28a7451a !important;
+}
+
+.btn.btn-secondary {
+    border: #28a745;
+    background: #328845;
+}
+
+.custom-modal .modal-dialog .modal-content {
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: unset!important;
+    border: 0;
+    border-left: 3px solid #28a745;
+}
+
+.custom-modal .icon {
+    font-size: 70px;
+    background-color: #28a745;
+    color: #f8fffa;
+    padding: 25px 26px 25px 30px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.swal2-container .swal2-title {
+    color: #28a745!important;
+}
+
+.dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover {
+    background: #28a745!important;
+    color: #fff;
+}

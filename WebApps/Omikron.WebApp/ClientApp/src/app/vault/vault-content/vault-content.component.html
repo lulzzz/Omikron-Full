@@ -1,0 +1,61 @@
+<div class="accounts">
+    <div *ngFor="let accounts of vaultModel?.accounts">
+        <h2>{{accounts?.accountTypes}}</h2>
+        <p>{{accounts?.count}} Accounts • {{accounts?.total | currency: 'GBP'}}</p>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let account of accounts?.accounts">
+                <div (click)="getAccountDetails(account?.hostId, account?.accountSource, account?.assetType, accounts?.accountTypes)" class="card-box"
+                    [ngClass]="{'border-bottom-radius-zero': account?.authorizationStatus !== 'Valid'}"
+                    [ngStyle]="{'background-color': account?.providerColour}">
+                    <img [hidden]="account?.accountSource === 'Manual'" [src]="account?.imageUrl" class="no-margin"
+                        alt="Account Logo">
+                    <p>{{account?.identificationNumber}}<strong>{{account?.name}}</strong></p>
+                    <div class="balance">
+                        <p>Balance<strong>{{account?.value | currency: 'GBP'}}</strong></p>
+                    </div>
+                </div>
+                <div *ngIf="account?.authorizationStatus !== 'Valid'" class="re-authorise"
+                    [ngClass]="{'re-authorise-warning': account?.authorizationStatus === 'ExpiringSoon', 're-authorise-danger': account?.authorizationStatus === 'Expired' }">
+                    <p><i class="ri-error-warning-fill"></i>You need to re-authorise your account.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="assets">
+    <div *ngFor="let assets of vaultModel?.assets">
+        <div *ngIf="assets?.assetTypeName === vaultItemType.Investments">
+            <h2>{{assets?.assetTypeName}}</h2>
+            <p>{{assets?.count}} {{assets?.assetTypeName | lowercase }} • {{assets?.total | currency: 'GBP'}}</p>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let asset of assets?.assets">
+                    <div (click)="getManualAccountDetails(asset.hostId, assets?.assetType)" class="card-box"
+                    [ngStyle]="{'background-color': '#A2DDFF'}">
+                        <img [hidden]="assets?.assetTypeName === vaultItemType.Investments" [src]="asset?.imageUrl" alt="Asset image">
+                        <p><strong>{{asset?.name}}</strong></p>
+                        <div class="balance">
+                            <p >Value<strong>{{asset?.value | currency: 'GBP'}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="assets?.assetTypeName != vaultItemType.Investments">
+            <h2>{{assets?.assetTypeName}}</h2>
+            <p>{{assets?.count}} {{assets?.assetTypeName | lowercase }} • {{assets?.total | currency: 'GBP'}}</p>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let asset of assets?.assets">
+                    <div class="cards" (click)="getManualAccountDetails(asset.hostId, assets?.assetType)">
+                        <img *ngIf="asset?.imageUrl" [src]="asset?.imageUrl | blobAccessToken" alt="Asset image">
+                        <img *ngIf="!asset?.imageUrl" [src]="assets?.assetTypeName | pictureUrl" alt="Asset image" class="default-image">
+                        <div class="box">
+                            <h2>{{asset?.name}}</h2>
+                            <p>Value<strong>{{asset?.value | currency: 'GBP'}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

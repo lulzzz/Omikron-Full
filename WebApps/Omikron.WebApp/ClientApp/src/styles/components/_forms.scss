@@ -1,0 +1,68 @@
+@import '../abstracts/variables';
+
+.input-wrapper{
+    position: relative;
+    &:before {
+        height: 100%;
+        width: 3px;
+        position: absolute;
+        top: 11px;
+        right: 24px;
+        content: "";
+        font-family: "remixicon" !important;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    &.checkbox{
+        &:before {
+        content: ""!important;
+        }
+        span{
+            margin-top: -5px!important;
+            margin-bottom: 10px;
+        }
+    }
+
+    &.no-icon{
+        &:before {
+        content: ""!important;
+        }
+    }
+
+    .error-summary{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            color: $red;
+            display: block;
+            margin-top: 8px;
+    }
+
+    &.has-error{
+        &:before {
+            content: "\eb97"; //class name: ri-close-circle-line
+            color: $red;
+        }
+        span{
+               font-style: normal;
+               font-weight: normal;
+               font-size: 14px;
+               line-height: 20px;
+               color: $red;
+               display: block;
+               margin-top: 8px;
+           }
+           input{
+               border: 1px solid $red!important;
+           }
+    }
+    &.show-success{
+        &:before {
+            content: "\EB81"; //class name: ri-checkbox-circle-line
+            font-family: "remixicon" !important;
+            color: $lime;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+<div class="total-account-summary">
+    <div class="row summary-group">
+        <div class="col-md-4 pr-md-0">
+            <div class="assets">
+                <button id="assetsButton" class="assets-active" (click)="makeAssetsActive()">
+                    <i class="ri-stack-line"></i>
+                    <span class="currency-title">Assets</span>
+                    <span class="currency">{{totalSummary?.assets | currency: 'GBP'}}</span>
+                </button>
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <div class="col-md-4 px-md-0">
+            <div class="liabilities">
+                <button id="liabilitiesButton" (click)="makeLiabilitiesActive()">
+                    <i class="ri-arrow-right-up-line"></i>
+                    <span class="currency-title">Liabilities</span>
+                    <span class="currency">{{totalSummary?.liabilities | currency:
+                        'GBP'}}</span>
+                </button>
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <div class="col-md-4 pl-md-0">
+            <div class="net">
+                <button id="netButton" (click)="makeNetActive()">
+                    <i class="ri-wallet-line"></i>
+                    <span class="currency-title">Net Position</span>
+                    <span class="currency">{{totalSummary?.net | currency: 'GBP'}}</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="diagram display-block">
+    <div class="diagram-info">
+        <div>
+            <button (click)="getChartData(true, numberOfMonths.zero)" [ngClass]="dateSpan == numberOfMonths.zero ? 'active' : ''">ALL TIME</button>
+            <button (click)="getChartData(false, numberOfMonths.one)" [ngClass]="dateSpan == numberOfMonths.one ? 'active' : ''">1M</button>
+            <button (click)="getChartData(false, numberOfMonths.three)" [ngClass]="dateSpan == numberOfMonths.three ? 'active' : ''">3M</button>
+            <button (click)="getChartData(false, numberOfMonths.six)" [ngClass]="dateSpan == numberOfMonths.six ? 'active' : ''">6M</button>
+            <button (click)="getChartData(false, numberOfMonths.twelve)" [ngClass]="dateSpan == numberOfMonths.twelve ? 'active' : ''">1Y</button>
+        </div>
+        <p>{{dateInterval}}</p>
+    </div>
+
+    <canvas #chartCanvas id="chartCanvas" class="chart" ></canvas>
+</div>
+<img id="journeyImage"  src="../../../images/journey-message.png" alt="Your Journey starts here" hidden>
+<img id="journeyImageTop"  src="../../../images/journey-message-top.png" alt="Your Journey starts here" hidden>

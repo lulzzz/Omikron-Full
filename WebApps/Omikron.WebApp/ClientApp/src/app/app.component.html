@@ -1,0 +1,7 @@
+<dynamic-css-loader></dynamic-css-loader>
+
+<div [ngSwitch]="dashboardView" class="h-100">
+    <app-layout  *ngSwitchCase="'PublicAdmin'"></app-layout>
+    <app-admin-layout *ngSwitchCase="'Admin'"></app-admin-layout>
+    <router-outlet  *ngSwitchDefault></router-outlet>
+</div>

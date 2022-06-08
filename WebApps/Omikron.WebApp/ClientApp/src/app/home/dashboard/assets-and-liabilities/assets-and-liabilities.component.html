@@ -1,0 +1,52 @@
+<div class="row cards-wraper">
+    <div class="col-lg-6">
+        <div class="box-wraper">
+            <div class="box-heading">
+                <h2>Assets <strong>{{dashboardAccountGroupingViewModel?.assets?.total | currency: dashboardAccountGroupingViewModel?.assets?.currency}}</strong></h2>
+                <p>Shows the assets you own </p>
+            </div>
+            <div class="content">
+                <div class="row" *ngFor="let account of dashboardAccountGroupingViewModel?.assets?.items">
+                    <div class="col-2 col-sm-1">
+                        <div class="icon-wrap">
+                            <i [class]="icons[account.types]"></i>
+                        </div>
+                    </div>
+                    <div class="col-10 col-sm-11">
+                        <p>{{account.types}} <strong>{{account.total | currency: account.currency}}</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <a href="/vault">See in the vault</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="box-wraper">
+            <div class="box-heading">
+                <h2>Liabilities <strong>{{dashboardAccountGroupingViewModel?.liabilities?.total | currency: dashboardAccountGroupingViewModel?.liabilities?.currency}}</strong></h2>
+                <p>Shows your current debts</p>
+            </div>
+            <div class="content">
+                <div class="row" *ngFor="let account of dashboardAccountGroupingViewModel?.liabilities?.items">
+                    <div class="col-2 col-sm-1">
+                        <div class="icon-wrap">
+                            <i [class]="icons[account.types]"></i>
+                        </div>
+                    </div>
+                    <div class="col-10 col-sm-11">
+                        <p>{{account.types}} <strong>{{account.total | currency: account.currency}}</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <a href="/vault">See in the vault</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

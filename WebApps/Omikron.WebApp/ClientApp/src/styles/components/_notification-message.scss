@@ -1,0 +1,79 @@
+@import '../abstracts/variables';
+@import "../../styles/abstracts/media";
+
+.notification-container {
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
+    position: relative;
+    border-radius: 5px;
+    width: 464px;
+    min-height: 12px;
+    
+    @include media-xs{
+        width: 95%;
+        margin-left: 5%;
+    }
+    @include media-sm{
+        width: 95%;
+        margin-left: 5%;
+    }
+    @include media-md{
+        width: 95%;
+        margin-left: 5%;
+    }
+    
+    &:before {
+        content: "";
+        height: 100%;
+        width: 3px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .notification-message {
+        padding: 24px 32px 24px 32px;
+        span {
+            letter-spacing: 0.03em;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 24px
+        }
+        p {
+            letter-spacing: 0em;
+            margin: 0;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+			color:  $black;
+
+        }
+    }
+    &.success {
+        background-color: $greenLight;
+		border-left: 6px solid $green;
+		.notification-message {
+            span {
+				color:  $green;
+		    }
+		}
+	}
+    &.info {
+        background-color: $blueLight;
+		border-left: 6px solid $blue;
+		.notification-message {
+            span {
+				color:  $blue;
+		    }
+		}
+	}
+	&.error {
+        background-color: $redLight;
+		border-left: 6px solid $red;
+		.notification-message {
+            span {
+				color:  $red;
+		    }
+		}
+	}
+}

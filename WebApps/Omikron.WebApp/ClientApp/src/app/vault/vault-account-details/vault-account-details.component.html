@@ -1,0 +1,55 @@
+<section class="pop-up-window">
+    <div class="top-navigation">
+        <button (click)="reAuthorise()"><i class="ri-refresh-line"></i>Re-authorise</button>
+        <button (click)="verifyAccountDelete()"><i class="ri-delete-bin-line"></i>Remove</button>
+        <button class="exit" (click)="closeModal()"><i class="ri-close-line"></i></button>
+    </div>
+    <div class="account-info">
+        <div class="warning" *ngIf="accountDetails?.authorizationStatus !== 'Valid'">
+            <i class="ri-error-warning-fill"></i>
+            <p>You need to re-authorise your account.</p>
+        </div>
+        <img [src]="accountDetails?.imageUrl" alt="Bank Provider Logo">
+        <div class="content">
+            <p>{{accountDetails?.identificationNumber}}<strong>{{accountDetails?.name}}</strong></p>
+            <p>BALANCE<strong>{{accountDetails?.value | currency: 'GBP'}}</strong></p>
+        </div>
+    </div>
+    <div class="shop">
+        <input class="search " type="text" id="searchTransactions" placeholder="Search for Transactions">
+        <div *ngIf="accountTransactions?.length !== 0" class="scroll-wraper">
+            <table *ngFor="let groups of accountTransactions">
+                <tr>
+                    <th>{{groups.date}}</th>
+                </tr>
+                <tr *ngFor="let tran of groups.transactions">
+                    <td class="text-nowrap" ><img *ngIf="tran?.merchantLogo" [src]="tran?.merchantLogo"> <i *ngIf="!tran?.merchantLogo"
+                            class="ri-send-plane-2-line"></i>
+                        <p *ngIf="tran.merchantName && !tran.transactionInformation ||
+                                  tran.merchantName && tran.transactionInformation">
+                            {{tran.merchantName}}
+                        </p>
+                        <p *ngIf="!tran.merchantName && tran.transactionInformation">{{tran.transactionInformation}}</p>
+                        <p *ngIf="!tran.merchantName && !tran.transactionInformation">Unknown merchant</p>
+                    </td>
+                    <td>{{tran.category}}</td>
+                    <td class="text-nowrap">
+                        <span *ngIf="tran.creditDebitIndicator">
+                            <span *ngIf="tran.creditDebitIndicator == CreditDebitIndicator.Debit">-</span>
+                            <span *ngIf="tran.creditDebitIndicator == CreditDebitIndicator.Credit">+</span>
+                        </span>
+                        {{tran.amount | currency: tran.currency}}
+                    </td>
+                </tr>
+            </table>
+            <div (click)="getMoreTransactions()" class="load-more" *ngIf="showSeeMoreButton">
+                <div class="row">
+                    <button>Load more</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="accountTransactions?.length === 0">
+            <p class="no-transactions-text">No transactions to display</p>
+        </div>
+    </div>
+</section>

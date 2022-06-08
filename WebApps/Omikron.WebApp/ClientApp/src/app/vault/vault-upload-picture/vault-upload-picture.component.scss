@@ -1,0 +1,57 @@
+.picture-border {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    height: 155px;
+    border: 1px dashed #958af8;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    label {
+        margin-bottom: 0;
+    }
+
+    .upload-picture {
+        position: relative;
+
+        img {
+            top: 15px;
+            left:12px;
+            position: absolute;
+        }
+
+        p {
+            text-align: unset;
+            font-size: 12px;
+            line-height: 20px;
+            margin: 0 0 0 40px;
+
+            strong {
+                color: #121212;
+            }
+        }
+    }
+}
+
+.picture-container {
+    position: relative;
+    margin-top: 32px;
+    width: 165px;
+    height: 100px;
+    border: 1px dashed #958af8;
+
+    .picture {
+        width: 165px;
+        height: 98px;
+        object-fit: contain;
+    }
+
+    .delete {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        cursor: pointer;
+    }
+}

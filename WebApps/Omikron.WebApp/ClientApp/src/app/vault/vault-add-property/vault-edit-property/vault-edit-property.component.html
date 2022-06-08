@@ -1,0 +1,100 @@
+<section class="pop-up-window-add-property">
+    <button class="exit"><span class="ri-close-line" (click)="closeModal()"></span></button>
+    <h2>Edit Property</h2>
+    <div class="add-new-form">
+        <form [formGroup]="formEditProperty">
+            <div class="form-group">
+                <label for="propertyName" class="font-12px white-50 font-weight-600">Property Name</label>
+                <div class="input-wrapper"
+                    [ngClass]="{'has-error': validation.displayMessage['propertyName'], 'show-success': formEditProperty.controls['propertyName'].valid}">
+                    <input id="propertyName" formControlName="propertyName" class="form-control line-height-20"
+                        type="text">
+                    <span>{{ validation.displayMessage['propertyName'] }}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="numberOfBedrooms" class="font-12px white-50 font-weight-600">Number of Bedrooms</label>
+                <div class="input-wrapper"
+                    [ngClass]="{'has-error': validation.displayMessage['numberOfBedrooms'], 'show-success': formEditProperty.controls['numberOfBedrooms'].valid}">
+                    <input id="numberOfBedrooms" formControlName="numberOfBedrooms" class="form-control line-height-20"
+                        type="number">
+                    <span>{{ validation.displayMessage['numberOfBedrooms'] }}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="postcode" class="font-12px white-50 font-weight-600">Post Code</label>
+                <div class="input-wrapper value-vehicle-wrapper no-icon"
+                    [ngClass]="{'has-error': validation.displayMessage['postcode']}">
+                    <input formControlName="postcode" class="form-control line-height-20 search-input" name="postcode"
+                        id="postcode" (change)="getAddress()" autocomplete="off">
+                    <button class="input-group-text value-vehicle-wrapper-button" (click)="valueMyProperty()"
+                        [disabled]="propertyValueProcessing">
+                        <p class="font-14px" *ngIf="!propertyValueProcessing">Value My Property</p>
+                        <p class="loading-spinner-circle" *ngIf="propertyValueProcessing"></p>
+                    </button>
+                    <span>{{ validation.displayMessage['postcode'] }}</span>
+                </div>
+            </div>
+            <div [hidden]="!showAddress" class="form-group">
+                <label for="address" class="font-12px white-50 font-weight-600">Address</label>
+                <div class="input-wrapper no-icon"
+                    [ngClass]="{'has-error': validation.displayMessage['address'], 'show-success': formEditProperty.controls['address'].valid}">
+                    <select id="select-address" #address formControlName="address" class="form-control">
+                    </select>
+                    <span>{{ validation.displayMessage['address'] }}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="propertyValue" class="font-12px white-50 font-weight-600">Property Value</label>
+                <div class="input-wrapper"
+                    [ngClass]="{'has-error': validation.displayMessage['propertyValue'], 'show-success': formEditProperty.controls['propertyValue'].valid}">
+                    <input id="propertyValue" formControlName="propertyValue" class="form-control line-height-20"
+                        type="number">
+                    <span>{{ validation.displayMessage['propertyValue'] }}</span>
+                </div>
+            </div>
+            <p *ngIf="propertyValueAdded">Properties are valued using the average property value based on your post code
+                area.</p>
+            <mat-checkbox formControlName="automaticallyReValueProperty"
+                (change)="automaticallyReValueProperty = !automaticallyReValueProperty">
+                Automatically re-value my property every month</mat-checkbox>
+
+            <div *ngIf="hasFinanceAgreement">
+                <div class="form-group">
+                    <label for="financeAgreementName" class="font-12px white-50 font-weight-600">Mortgage Provider</label>
+                    <div class="input-wrapper">
+                        <input id="financeAgreementName" formControlName="financeAgreementName"
+                            class="form-control line-height-20" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reference" class="font-12px white-50 font-weight-600">Reference</label>
+                    <div class="input-wrapper">
+                        <input id="reference" formControlName="reference" class="form-control line-height-20" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newFinanceBalance" class="font-12px white-50 font-weight-600">Mortgage Balance</label>
+                    <div class="input-wrapper">
+                        <input id="newFinanceBalance" formControlName="newFinanceBalance" class="form-control line-height-20"
+                            type="number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notes" class="font-12px white-50 font-weight-600">Notes</label>
+                    <div class="input-wrapper">
+                        <textarea class="notes-input" id="notes" formControlName="notes" type="text"
+                            autocomplete="off"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <app-vault-upload-picture (sendPhoto)="getPhoto($event)" [itemPhoto]="itemPhoto" [editMode]="true"></app-vault-upload-picture>
+            </div>
+
+        </form>
+        <button class="back-button" (click)="backToPropertyDetails()">Back</button>
+        <button class="next-button" (click)="updateProperty()">Save</button>
+    </div>
+</section>

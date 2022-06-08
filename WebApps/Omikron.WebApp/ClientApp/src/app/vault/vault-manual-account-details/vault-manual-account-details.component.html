@@ -1,0 +1,55 @@
+<section class="pop-up-window" [busyIndicator]="isBusy">
+    <div class="top-navigation row">
+        <div class="col-1">
+            <img [src]="itemType | vaultManualAccountImage" alt="investment">
+        </div>
+        <div class="col-md-6 title">
+            <p class="top-navigation-title">{{accountDetails?.name}}</p>
+            <a *ngIf="accountDetails?.financeName" (click)="showFinance()">{{accountDetails?.financeName}}</a>
+        </div>
+        <div class="col-md-5 p-0 icons">
+            <button (click)="editAccount()"><span class="ri-edit-line"></span>Edit</button>
+            <button (click)="verifyAccountDelete()"><span class="ri-delete-bin-line"></span>Remove</button>
+        </div>
+
+        <button class="exit" (click)="closeModal()"><span class="ri-close-line"></span></button>
+    </div>
+    <div class="row" *ngIf="accountDetails?.totalBalance">
+        <div class="col">
+            <p class="total-balance">Total Balance</p>
+            <p class="total-balance-amount">{{accountDetails?.totalBalance | currency : accountDetails.currencyCode}}
+            </p>
+        </div>
+    </div>
+    <div class="account-info">
+        <div class="content">
+            <div class="row">
+                    <p *ngFor="let keyPair of accountDetails?.details" class="col">
+                        {{keyPair.name}}<br>
+                        <span>{{keyPair?.renderCurrency ? (keyPair?.value | currency: accountDetails?.currencyCode) :
+                            (keyPair?.value)}}</span>
+                    </p>
+            </div>
+            <p *ngIf="accountDetails?.notes" class="notes-heading">Notes</p>
+            <p *ngIf="accountDetails?.notes" class="notes-text">{{accountDetails?.notes}}</p>
+        </div>
+    </div>
+    <div class="shop">
+        <div *ngIf="accountDetails?.transactions?.length !== 0" class="scroll-wraper">
+            <table aria-describedby="Transactions">
+                <tr>
+                    <th scope="col">Transactions</th>
+                </tr>
+                <tr *ngFor="let tran of accountDetails?.transactions">
+                    <td>{{tran.type}}</td>
+                    <td>{{tran.date | date: 'dd/MM/YYYY'}}</td>
+                    <td>{{tran.amount | currency: tran.currency}}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div *ngIf="accountDetails?.transactions?.length === 0">
+            <p class="no-transactions-text">No transactions to display</p>
+        </div>
+    </div>
+</section>

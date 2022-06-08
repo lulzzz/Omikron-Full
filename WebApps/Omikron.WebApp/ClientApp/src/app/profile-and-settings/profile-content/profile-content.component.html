@@ -1,0 +1,56 @@
+<section class="profile-details">
+    <div class="row">
+        <button class="profile"><i class="ri-account-circle-line"></i>Profile</button>
+        <button class="subscription"><i class="ri-star-fill"></i>Subscription</button>
+    </div>
+    <div class="row">
+        <div class="form col-lg-6">
+            <div class="top-content">
+                <h2>Your Profile Details</h2>
+                <button (click)="editProfile()">Edit Profile Details</button>
+                <fieldset>
+                    <label>Nickname</label>
+                    <input type="text" [ngModel]="profileDetailsViewModel?.nickname">
+                    <label>Email Address</label>
+                    <input type="text" [ngModel]="profileDetailsViewModel?.email">
+                    <label>Phone Number</label>
+                    <input type="text" [ngModel]="profileDetailsViewModel?.phoneNumber">
+                    <label>Password</label>
+                    <div class="input-group">
+                        <input type="password" value="••••••••">
+                        <button class="input-group-text change-password-button" (click)="changePassword()">Change
+                            password</button>
+                    </div>
+                </fieldset>
+                <div class="email">
+                    <h2>Email Preferences</h2>
+                    <p>We promise to never spam you but there are some things that we’ll always tell you about - like
+                        changes to our
+                        Terms and Conditions.</p>
+                    <div class="check-box">
+                        <label class="switch">
+                            <input type="checkbox" [checked]="profileDetailsViewModel?.marketingCommunications"
+                                (click)="updateMarketingCommunications()">
+                            <span class="slider round"></span>
+                        </label>
+                        <p>Marketing Communications</p>
+                    </div>
+                    <div class="check-box">
+                        <label class="switch">
+                            <input type="checkbox" [checked]="profileDetailsViewModel?.accountNotifications"
+                                (click)="updateAccountNotifications()">
+                            <span class="slider round"></span>
+                        </label>
+                        <p>Account Notifications</p>
+                    </div>
+                </div>
+                <div class="delete-acc">
+                    <h2>Delete Account?</h2>
+                    <p>We’re sad to see you go but we support your decision.</p>
+                    <p>Once your account is deleted, you will lose all the data in this account.</p>
+                    <button (click)="deleteAccount()">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,98 @@
+@import "../../../styles/abstracts/media";
+
+.top-merchants {
+    background: #ffffff;
+    margin-top: 70px;
+    padding: 24px 24px 0 50px;
+
+    h2 {
+        color: #242424;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 21px;
+        line-height: 150%;
+        small {
+            color: #888888;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            display: block;
+            margin-bottom: 31px;
+        }
+    }
+
+    button {
+        border: 0;
+        background: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        color: #958af9;
+        margin: 5px auto;
+    }
+    .merchants-container {
+        margin-left: -15px;
+        margin-right: -15px;
+
+        .box-wraper {
+            width: 18%;
+            display: inline-block;
+            margin: 10px;
+            @media (max-width: 600px) {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            @include media-sm {
+                width: 29%;
+            }
+        }
+        .box {
+            border: 1px solid #e4e4e7;
+            border-radius: 6px;
+            .header-box {
+                text-align: center;
+                border-bottom: 1px solid #e4e4e7;
+                height: 86px;
+                padding: 15px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+            .bottom-box {
+                padding: 14px 24px 25px 23px;
+                text-align: center;
+                height: 135px;
+                h2 {
+                    color: #958af8;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 20px;
+                    small {
+                        color: #afafc0;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 10px;
+                        line-height: 150%;
+                        margin-bottom: 2px;
+                        margin-top: 16px;
+                    }
+                    strong {
+                        color: #242424;
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 28px;
+                        line-height: 150%;
+                    }
+                }
+            }
+        }
+    }
+}

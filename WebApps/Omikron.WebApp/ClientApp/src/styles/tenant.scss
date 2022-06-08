@@ -1,0 +1,102 @@
+@import "variables";
+
+.tenants {
+    &.add-modal {
+        .icon {
+            font-size: 70px;
+            background-color: $color-primary-Text;
+            color: $color-primary-10;
+            padding: 25px 26px 25px 30px;
+            border-radius: 50%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    &.edit {
+        .header {
+            a {
+                &:hover {
+                    text-decoration: unset;
+                    color: $color-primary-3;
+
+                    * {
+                        color: $color-primary-3;
+                    }
+                }
+            }
+        }
+
+        .spliter {
+            margin: 0 -20px;
+            border-top: 1px solid $color-neutral-9;
+        }
+    }
+}
+
+@media (max-width: $break-extra-small) {
+    .tenants {
+        &.list {
+            .search {
+                > div {
+                    width: 100%;
+                }
+                > .input-icon {
+                    margin: 0 !important;
+                    margin-bottom: 5px !important;
+                }
+            }
+        }
+
+        &.empty {
+            .icon {
+                display: none !important;
+            }
+
+            .content {
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+
+                span {
+                    &.title {
+                        line-height: 50px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+        &.add-modal {
+            p {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-extra-small + 1) and (max-width: $break-medium) {
+    .tenants {
+        &.empty {
+            justify-content: center !important;
+
+            .icon {
+                display: none !important;
+            }
+
+            .content {
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+
+                span {
+                    &.title {
+                        line-height: 50px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+@import "variables";
+
+.onboarding {
+
+    .image-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .action {
+            text-align: center;
+            margin-top: 15px;
+
+            >div {
+                text-align: left;
+            }
+        }
+    }
+
+    .form-group {
+        &.spliter {
+            border-bottom: 1px solid #ebebeb;
+            padding-bottom: 15px;
+        }
+    }
+}

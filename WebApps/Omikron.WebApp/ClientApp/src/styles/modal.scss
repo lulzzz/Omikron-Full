@@ -1,0 +1,84 @@
+@import "variables";
+
+.custom-modal {
+    .icon {
+        font-size: 70px;
+        background-color: $color-app-orange;
+        color: $color-login-primary-text-button;
+        padding: 25px 26px 25px 30px;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .modal-dialog {
+        margin: 0;
+        position: absolute;
+        right: 0;
+        width: 100%;
+
+        .modal-content {
+            height: 100vh;
+            border-radius: 0;
+            box-shadow: unset !important;
+            border: 0;
+            border-left: 1px solid #dee2e6;
+
+            >div,
+            >div>div {
+                border: 0;
+            }
+
+            .modal-header {
+                >.close {
+                    outline: unset;
+                    color: $color-app-dark-blue;
+                    margin: 5px 5px 5px auto;
+                    font-size: 30px;
+
+                    &:hover {
+                        color: $color-primary-button-hover;
+                    }
+                }
+            }
+
+            .form-main-content {
+                padding: 20px;
+                background: $color-bg-muted;
+
+                label {
+                    color: $color-app-dark-blue;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+.modal-backdrop {
+    &.show {
+        opacity: 0.4;
+    }
+}
+
+
+.swal2-container {
+    .swal2-icon.swal2-question {
+        border-color: $color-warning-orange !important;
+        color: $color-danger-red !important;
+    }
+
+    .swal2-title {
+        color: $color-warning-orange !important;
+    }
+
+    #swal2-content {
+        color: $color-app-dark-blue !important;
+    }
+
+    .swal2-icon.swal2-info {
+        border-color: $color-warning-orange;
+        color: $color-danger-red;
+    }
+}

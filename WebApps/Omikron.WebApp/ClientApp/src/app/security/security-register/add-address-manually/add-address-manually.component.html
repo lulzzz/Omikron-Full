@@ -1,0 +1,59 @@
+<section class="add-address">
+    <h2>Please tell us your address</h2>
+    <form [formGroup]="addAddressForm" autocomplete="off">
+
+        <input autofocus="autofocus" hidden>
+
+        <div class="form-group">
+            <label for="houseNumber">House Number/Name</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['houseNumber'], 'show-success': addAddressForm.controls['houseNumber'].valid}">
+                <input id="houseNumber" formControlName="houseNumber" type="text"
+                    autocomplete="off">
+                <span>{{ validation.displayMessage['houseNumber'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="addressLine1">Address Line 1</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['addressLine1'], 'show-success': addAddressForm.controls['addressLine1'].valid}">
+                <input id="addressLine1" formControlName="addressLine1" type="text"
+                    autocomplete="off">
+                <span>{{ validation.displayMessage['addressLine1'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="addressLine2">Address Line 2</label>
+            <div class="input-wrapper">
+                <input id="addressLine2" formControlName="addressLine2" type="text" autocomplete="off" placeholder='(optional)'>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="town">Town/City</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['town'], 'show-success': addAddressForm.controls['town'].valid}">
+                <input id="town" formControlName="town" type="text"
+                    autocomplete="off">
+                <span>{{ validation.displayMessage['town'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="postcode">Postcode</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['postcode'], 'show-success': addAddressForm.controls['postcode'].valid}">
+                <input id="postcode" formControlName="postcode" type="text"
+                    autocomplete="off">
+                <span>{{ validation.displayMessage['postcode'] }}</span>
+            </div>
+        </div>
+
+    </form>
+
+    <button class="cancel-button" (click)="closeModal()">Cancel</button>
+    <button class="save-button" (click)="submit()"
+        [ngClass]="{'save-button-activated': addAddressForm?.valid}">Save</button>
+</section>

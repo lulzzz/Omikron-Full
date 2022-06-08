@@ -1,0 +1,54 @@
+<section class="pop-up-window-omikron-vault">
+    <button class="exit" (click)="hideModal()" data-dismiss="modal" aria-label="Close"><i
+            class="ri-close-line"></i></button>
+    <h2>Add to Your OMIKRON Vault</h2>
+    <p class="gray-color">What would you like to add?</p>
+    <div class="items">
+        <li>
+            <a (click)="addAccount(VaultAddObAccountComponent)"><span><img src="../../../images/Vault/current_account.svg"
+                        alt="current_account">
+                    <p>Current Account</p>
+                </span></a>
+        </li>
+        <li>
+            <a (click)="addAccount(VaultAddObAccountComponent)"><span><img src="../../../images/Vault/savings_account.svg"
+                        alt="savings_account">
+                    <p>Savings Account</p>
+                </span></a>
+        </li>
+        <li>
+            <a (click)="addAccount(VaultAddObAccountComponent)"><span><img src="../../../images/Vault/credit_card.svg" alt="credit_card">
+                    <p>Credit Card</p>
+                </span></a>
+        </li>
+        <li>
+            <a (click)="addAccountManually()"><span><img src="../../../images/Vault/loan.svg" alt="loan">
+                    <p>Loan</p>
+                </span></a>
+        </li>
+        <li>
+            <a (click)="addAccountManually()"><span><img src="../../../images/Vault/pension.svg" alt="pension">
+                    <p>Pension</p>
+                </span></a>
+        </li>
+        <li (click)="addAccount(VaultAddInvestmentComponent)">
+            <a><span><img src="../../../images/Vault/investment.svg" alt="investment">
+                    <p>Investment</p>
+                </span></a>
+        </li>
+        <li>
+            <a (click)="addAccount(VaultAddPropertyComponent)"><span><img src="../../../images/Vault/property.svg" alt="property">
+                    <p>Property</p>
+                </span></a>
+        </li>
+        <li>
+            <a (click)="addAccount(VaultAddVehicleComponent)"><span><img src="../../../images/Vault/vehicle.svg" alt="vehicle">
+            <p>Vehicle</p> </span></a>
+        </li>
+        <li (click)="addAccount(VaultAddPersonalItemComponent)">
+            <a><span><img src="../../../images/Vault/personal_item.svg" alt="personal_item">
+                    <p>Personal Item</p>
+                </span></a>
+        </li>
+    </div>
+</section>

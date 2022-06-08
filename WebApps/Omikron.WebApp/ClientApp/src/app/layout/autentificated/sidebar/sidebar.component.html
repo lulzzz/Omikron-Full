@@ -1,0 +1,36 @@
+<div [ngClass]="navigationClosed ? 'closed-navigation' : ''">
+    <div class="navigation">
+        <a href="/home"></a>
+        <a href="/home"></a>
+        <button class="ri-menu-fold-line close-navigation-button white-50" (click)="changeNavigation()"></button>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="/dashboard" [ngClass]="activeRoute == 0 ? 'active' : ''" ><i class="ri-home-line"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/analytics" [ngClass]="activeRoute == 1 ? 'active' : ''"><i class="ri-bar-chart-box-line"></i>
+                        <p>Analytics</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/vault" [ngClass]="activeRoute == 2 ? 'active' : ''"><i class="ri-wallet-line"></i>
+                        <p>OMIKRON Vault</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile" [ngClass]="activeRoute == 4 ? 'active' : ''"><i class="ri-settings-3-line"></i>
+                        <p>Profile &amp; Settings</p>
+                    </a>
+                </li>
+                <li (click)="LogOut()">
+                    <a href=""><i class="ri-user-received-2-line"></i>
+                        <p>Log Out</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div [class.transparent-background]="!transparent" class="welcome-wrapper row">
+    <div>
+        <h2>{{header}}</h2>
+        <p>{{paragraph}}<span *ngIf="vaultHeader">{{vaultBalance | currency:'GBP'}}</span></p>
+    </div>
+
+    <div class="notification">
+        <app-notification></app-notification>
+        <button *ngIf="vaultHeader" (click)="addToVaultModal()">
+            <p>Add to your Vault</p>
+        </button>
+    </div>
+</div>

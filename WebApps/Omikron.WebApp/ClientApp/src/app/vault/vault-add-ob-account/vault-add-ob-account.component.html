@@ -1,0 +1,11 @@
+<section class="pop-up-window-omikron-vault">
+    <button class="exit" (click)="hideModal()" data-dismiss="modal" aria-label="Close"><i
+            class="ri-close-line"></i></button>
+
+    <div class="center-div">
+        <h3 class="font-24px font-weight-bold  line-height-32">Add An Account To Your OMIKRON Vault</h3>
+        <p class="font-18px">Search for your account provider or select from the list below</p>
+
+        <app-providers-list [redirectUrl]="redirectUrl" [navigateUrl]="navigateUrl"></app-providers-list>
+    </div>
+</section>

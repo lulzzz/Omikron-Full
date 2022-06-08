@@ -1,0 +1,83 @@
+<form *ngIf="formMyDetails" class="form-sign-up" [formGroup]="formMyDetails" autocomplete="off">
+    <h3 class="font-24px font-weight-bold">Tell us about you</h3>
+    <p class="white-50 font-18px line-height-26">We need your information to verify you. <br>
+        <a class="primary-color" href="https://omikronmoney.io/faq" target="_blank">Why do we need this information?</a>
+    </p>
+
+    <div class="form-group">
+        <label for="title" class="font-12px gray-color font-weight-600">Title</label>
+        <div class="input-wrapper no-icon" [ngClass]="{'has-error': validation.displayMessage['title']}">
+            <select id="title" formControlName="title" type="title" class="form-control line-height-20" required>
+                <option value="" disabled selected hidden>Please select</option>
+                <option value=0>Mr</option>
+                <option value=1>Mrs</option>
+                <option value=2>Miss</option>
+                <option value=4>Dr</option>
+                <option>I don't want to say</option>
+            </select>
+            <span>{{ validation.displayMessage['title'] }}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="firstName" class="font-12px white-50 font-weight-600">First Name</label>
+        <div class="input-wrapper"
+            [ngClass]="{'has-error': validation.displayMessage['firstName'], 'show-success': formMyDetails.controls['firstName'].valid}">
+            <input id="firstName" formControlName="firstName" class="form-control line-height-20" type="text"
+                placeholder="First name" autocomplete="new-password">
+            <span>{{ validation.displayMessage['firstName'] }}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName" class="font-12px white-50 font-weight-600">Last Name</label>
+        <div class="input-wrapper"
+            [ngClass]="{'has-error': validation.displayMessage['lastName'], 'show-success': formMyDetails.controls['lastName'].valid}">
+            <input id="lastName" formControlName="lastName" class="form-control line-height-20" placeholder="Last name"
+                autocomplete="new-password" type="text">
+            <span>{{ validation.displayMessage['lastName'] }}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="dateOfBirth" class="font-12px white-50 font-weight-600">Date of birth</label>
+        <div class="input-wrapper no-icon"
+            [ngClass]="{'has-error': validation.displayMessage['dateOfBirth'], 'show-success': formMyDetails.controls['dateOfBirth'].valid}">
+            <input id="dateOfBirth" formControlName="dateOfBirth" class="form-control" type="date" name="date"
+                min="1900-01-01" max="2200-01-01">
+            <span>{{ validation.displayMessage['dateOfBirth'] }}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="postcode" class="font-12px white-50 font-weight-600">Postcode</label>
+        <div class="input-wrapper postcode-wrapper no-icon"
+            [ngClass]="{'has-error': validation.displayMessage['postcode']}">
+            <input placeholder="Enter your postcode" formControlName="postcode" class="form-control line-height-20"
+                name="postcode" id="postcode">
+            <button class="input-group-text postcode-wrapper-button" (click)="getAddress()">
+                <p class="font-14px text-light">Find Address</p>
+            </button>
+            <span>{{ validation.displayMessage['postcode'] }}</span>
+        </div>
+        <button class="btn bg-transparent float-right" (click)="addAddressManually()">
+            <p class="address-manually-text">Add your address manually</p>
+        </button>
+    </div>
+
+    <div [hidden]="!showAddress" class="form-group">
+        <label for="address" class="font-12px white-50 font-weight-600">Address</label>
+        <div class="input-wrapper no-icon"
+            [ngClass]="{'has-error': validation.displayMessage['address'], 'show-success': formMyDetails.controls['address'].valid}">
+            <select id="select-address" #address formControlName="address" class="form-control">
+            </select>
+            <span>{{ validation.displayMessage['address'] }}</span>
+        </div>
+    </div>
+    <div class="border-bottom border-secondary form-group"></div>
+
+    <div class="form-group">
+        <button type="submit" [ngClass]="!showNextStep  ? 'btn-submit' : 'btn-submit-activated'" [class.button-disabled]="buttonDisabled"
+            (click)="verifyDetails()">Continue</button>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+<div class="income-diagram">
+    <div class="date">
+        <p>{{date}}</p>
+    </div>
+    <div class="content">
+        <p>Income & Expenditure<small>Let’s compare your income and expenditure</small></p>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="balance">Remaining balance:</p>
+                <p><strong>{{remainingBalance | currency: 'GBP'}}</strong></p>
+            </div>
+            <div class="col-md-6 content-links">
+                <span class="income-dot"></span> <span class="income-link">Income</span>
+                <span class="expenditure-dot"></span> <span class="expenditure-link">Expenditure</span>
+            </div>
+        </div>
+    </div>
+    <canvas id="secondBarChart" class="chart"></canvas>
+    <div class="chart-value d-flex justify-content-around">
+        <span class="text-dark">+{{totalIncome | currency: 'GBP'}}</span>
+        <span class="text-dark">{{totalExpenditure | currency: 'GBP'}}</span>
+    </div>
+</div>

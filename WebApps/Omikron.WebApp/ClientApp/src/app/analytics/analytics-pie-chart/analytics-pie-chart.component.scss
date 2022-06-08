@@ -1,0 +1,54 @@
+@import "../../../styles/abstracts/media";
+.expenditure-diagram {
+    border: 1px solid #E4E4E7;
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding: 22px 25px 54px 50px;
+    height: 493px;
+
+    @include media-xs {
+        margin-bottom: 30px;
+    }
+
+    .chart {
+        margin: auto !important;
+        height: 275px !important;
+        width: 275px !important;
+    }
+
+    .date {
+        width: 100%;
+        text-align: right;
+        margin-bottom: 8px;
+
+        p {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 150%;
+            color: #888888;
+            margin-bottom: 0px;
+        }
+    }
+
+    .content {
+        margin-bottom: 50px;
+
+        p {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            color: #242424;
+            margin-bottom: 0px;
+
+            small {
+                display: block;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 150%;
+                color: #888888;
+            }
+        }
+    }
+}

@@ -1,0 +1,379 @@
+.add-account {
+    width: 712px;
+    background: white;
+    box-shadow: -24px 0px 80px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 78px 48px 107px 52px;
+    margin-top: 50px;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        padding: 30px 15px 30px 15px;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 100%;
+    }
+
+    .input-wrapper {
+        &:before {
+            top: 13px !important;
+        }
+    }
+
+    h2 {
+        text-align: center;
+        color: #27292A;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 50px;
+    }
+
+    form {
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #afafc0;
+            font-family: Poppins, sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 6px;
+            background: #F3F3F8;
+            border: none;
+            height: 94px;
+            color: black;
+        }
+
+        input {
+            @extend textarea;
+            height: 48px;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #AFAFC0 !important;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        input::-ms-input-placeholder,
+        textarea::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: #AFAFC0 !important;
+        }
+
+
+        select {
+            border: none;
+            color: black;
+            height: 48px;
+            font-size: 16px;
+            line-height: 20px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 15l-4.243-4.243 1.415-1.414L12 12.172l2.828-2.829 1.415 1.414z' fill='rgba(175, 175, 192, 1)'/%3E%3C/svg%3E") #F3F3F8 no-repeat 98.5% !important;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 15l-4.243-4.243 1.415-1.414L12 12.172l2.828-2.829 1.415 1.414z' fill='rgba(175, 175, 192, 1)'/%3E%3C/svg%3E") #F3F3F8 no-repeat calc(100% - 10px) !important;
+
+            &:focus {
+                color: black;
+                border: 1px solid white !important;
+            }
+        }
+    }
+
+    p {
+        color: #27292A;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        margin-left: 25px;
+        line-height: 18px;
+        position: relative;
+
+        .ri-checkbox-circle-fill:before {
+            content: "\eb5d";
+            color: #42a732;
+            font-size: 18px;
+            position: absolute;
+            top: 3px;
+            left: -25px;
+        }
+    }
+
+    .cancel-button {
+        border-radius: 4px;
+        background: #ffffff;
+        border: 1px solid #e4e4e7;
+        color: #e86e61;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 15px;
+        margin-right: 24px;
+        width: 26%;
+
+        @media (max-width: 600px) {
+            padding: 15px 5px;
+            margin-right: 6px;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            border: 1px solid #958AF8;
+            background: #958AF8;
+            color: white;
+        }
+    }
+
+    .exit{
+        border: none;
+        background: transparent;
+        color: #BBB;
+        font-weight: 500;
+        line-height: 20px;
+        padding-right: 24px;
+        padding-right: 0px;
+        position:absolute;
+        top: 72px;
+        right: -180px;
+        font-size: 20px;
+        @media (max-width: 600px) {
+            top: 60px;
+            right: 15px;
+        }
+    }
+
+    .save-button {
+        background: #C3C3C7;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        border: none;
+        padding: 15px;
+        width: 70%;
+    }
+
+    .save-button-activated {
+        background: #958af8;
+        color: white;
+    }
+
+    /* Chrome, Safari, Edge, Opera -- Hide arrows for number input */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox -- Hide arrows for number input  */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+}
+
+.add-account-dark-theme {
+    width: 712px;
+    background: #121212;
+    box-shadow: -24px 0px 80px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 78px 48px 107px 52px;
+    margin-top: 50px;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        padding: 30px 15px 30px 15px;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 100%;
+    }
+
+    .input-wrapper {
+        &:before {
+            top: 13px !important;
+        }
+    }
+
+    h2 {
+        text-align: center;
+        color: white;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 50px;
+    }
+
+    form {
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: Poppins, sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.16);
+            border: none;
+            height: 94px;
+            color: white;
+        }
+
+        input {
+            @extend textarea;
+            height: 48px;
+        }
+
+        select {
+            border: none;
+            color: white;
+            height: 48px;
+            font-size: 16px;
+            line-height: 20px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 15l-4.243-4.243 1.415-1.414L12 12.172l2.828-2.829 1.415 1.414z' fill='rgba(255,255,255,0.5)'/%3E%3C/svg%3E") rgba(255, 255, 255, 0.16) no-repeat 98.5% !important;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 15l-4.243-4.243 1.415-1.414L12 12.172l2.828-2.829 1.415 1.414z' fill='rgba(255,255,255,0.5)'/%3E%3C/svg%3E") rgba(255, 255, 255, 0.16) no-repeat calc(100% - 10px) !important;
+
+            &:focus {
+                color: black;
+                border: 1px solid white !important;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.24);
+            }
+        }
+    }
+
+    p {
+        color: white;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        margin-left: 25px;
+        line-height: 18px;
+        position: relative;
+
+        .ri-checkbox-circle-fill:before {
+            content: "\eb5d";
+            color: #42a732;
+            font-size: 18px;
+            position: absolute;
+            top: 3px;
+            left: -25px;
+        }
+    }
+
+    .exit{
+        border: none;
+        background: transparent;
+        color: #BBB;
+        font-weight: 500;
+        line-height: 20px;
+        padding-right: 24px;
+        padding-right: 0px;
+        position:absolute;
+        top: 72px;
+        right: -180px;
+        font-size: 20px;
+        @media (max-width: 600px) {
+            top: 20px;
+            right: 25px;
+        }
+    }
+
+    .cancel-button {
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: #121212;
+        color: #e86e61;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 15px;
+        margin-right: 24px;
+        width: 26%;
+
+        @media (max-width: 600px) {
+            padding: 15px 5px;
+            margin-right: 6px;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            border: 1px solid #958AF8;
+            background: #958AF8;
+            color: white;
+        }
+    }
+
+    .save-button {
+        background: rgba(255, 255, 255, 0.16);
+        border-radius: 4px;
+        color: rgba(255, 255, 255, 0.5);
+        ;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        border: none;
+        padding: 15px;
+        width: 70%;
+    }
+
+    .save-button-activated {
+        background: #958af8 !important;
+        color: white;
+    }
+
+    /* Chrome, Safari, Edge, Opera -- Hide arrows for number input */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox -- Hide arrows for number input  */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+}

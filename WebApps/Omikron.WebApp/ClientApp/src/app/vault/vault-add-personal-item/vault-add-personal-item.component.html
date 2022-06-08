@@ -1,0 +1,181 @@
+<section class="pop-up-window-add-personal-item">
+    <button (click)="closeModal()" class="exit"><i class="ri-close-line"></i></button>
+    <h2>Add Personal Item</h2>
+    <div class="top-navigation">
+        <div class="d-flex justify-content-md-center">
+            <div class="col col-lg-2">
+                <button>
+                    <img (click)="showStepOne()" class="personal-item-icon" src="../../../images/Vault/user-6-fill.svg"
+                        alt="User Icon">
+                    <p class="dark-text">Personal Item</p>
+                </button>
+            </div>
+            <div class="col-md-auto">
+            </div>
+            <div class="col col-lg-2">
+                <button class="finance-icon" (click)="showStepTwo()">
+                    <img class="finance-icon" [hidden]="!stepOneHidden" src="../../../images/Vault/bank-card-line.svg"
+                        alt="Finance Icon">
+                    <img class="not-active" [hidden]="stepOneHidden" src="../../../images/Vault/bank-card-line-grey.svg"
+                        alt="Finance Icon Inactive">
+                    <p [ngClass]="stepOneHidden ? 'dark-text' : ''">Finance</p>
+                </button>
+            </div>
+            <div class="col-md-auto">
+            </div>
+            <div class="col col-lg-2">
+                <button class="photo-icon" (click)="showStepThree()">
+                    <img [hidden]="stepThreeHidden" src="../../../images/Vault/image-line.svg" alt="Photo Icon">
+                    <img class="not-active" src="../../../images/Vault/image-line-grey.svg" alt="Photo Icon Inactive"
+                        [hidden]="!stepThreeHidden">
+                    <p [ngClass]="!stepThreeHidden  ? 'dark-text' : ''">Photo</p>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="links">
+        <div class="add-new-form" cdkScrollable>
+
+            <form [formGroup]="personalItemForm">
+
+                <fieldset [hidden]="stepOneHidden">
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <div class="input-wrapper"
+                            [ngClass]="{'has-error': validation.displayMessage['itemName'], 'show-success': personalItemForm.controls['itemName'].valid}">
+                            <input id="itemName" formControlName="itemName" type="name" autocomplete="off">
+                            <span>{{ validation.displayMessage['itemName'] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="value">Value</label>
+                        <div class="input-wrapper"
+                            [ngClass]="{'has-error': validation.displayMessage['value'], 'show-success': personalItemForm.controls['value'].valid}">
+                            <input id="value" formControlName="value" type="number" autocomplete="off">
+                            <span>{{ validation.displayMessage['value'] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purchaseValue">Purchase Value</label>
+                        <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['purchaseDate'], 'show-success': personalItemForm.controls['purchaseValue'].valid && personalItemForm.controls['purchaseValue'].dirty}">
+                            <input id="purchaseValue" formControlName="purchaseValue" type="number" autocomplete="off">
+                            <span>{{ validation.displayMessage['purchaseDate'] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purchaseDate">Purchase Date</label>
+                        <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['purchaseValue'], 'show-success': personalItemForm.controls['purchaseDate'].valid && personalItemForm.controls['purchaseDate'].dirty}">
+                            <input class="date-input-validation" id="purchaseDate" formControlName="purchaseDate" type="date" autocomplete="off">
+                            <span>{{ validation.displayMessage['purchaseValue'] }}</span>
+                        </div>
+                    </div>
+
+                    <button (click)="showAddAccountModal()" class="back-button">Back</button>
+                    <button (click)="showStepTwo()" class="next-button">Next</button>
+                </fieldset>
+
+                <fieldset [hidden]="stepTwoHidden">
+                    <button class="switch-button" (click)="showAddNewFinanceAgreement()"
+                        [class.active]="linkExistingHidden">Add New</button>
+                    <button class="switch-button" (click)="showLinkExistingFinanceAgreement()"
+                        [class.active]="addNewHidden">Link
+                        Existing</button>
+
+                    <fieldset [hidden]="addNewHidden">
+                        <div class="form-group">
+                            <label for="financeAgreementName">Finance Agreement Name</label>
+                            <div class="input-wrapper"
+                                [ngClass]="{'has-error': validation.displayMessage['financeAgreementName'], 'show-success': personalItemForm.controls['financeAgreementName'].valid}">
+                                <input id="financeAgreementName" formControlName="financeAgreementName" type="text"
+                                    autocomplete="off">
+                                <span>{{ validation.displayMessage['financeAgreementName'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newFinanceBalance">Finance Balance</label>
+                            <div class="input-wrapper"
+                                [ngClass]="{'has-error': validation.displayMessage['newFinanceBalance'], 'show-success': personalItemForm.controls['newFinanceBalance'].valid}">
+                                <input id="newFinanceBalance" formControlName="newFinanceBalance" type="number"
+                                    autocomplete="off">
+                                <span>{{ validation.displayMessage['newFinanceBalance'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="openBalance">Open Account Balance</label>
+                            <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['openDate'], 'show-success': personalItemForm.controls['openBalance'].valid && personalItemForm.controls['openBalance'].dirty}">
+                                <input id="openBalance" formControlName="openBalance" type="number" autocomplete="off">
+                                <span>{{ validation.displayMessage['openDate'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="openDate">Account Open Date</label>
+                            <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['openBalance'], 'show-success': personalItemForm.controls['openDate'].valid && personalItemForm.controls['openDate'].dirty}">
+                                <input class="date-input-validation" id="openDate" formControlName="openDate" type="date" autocomplete="off">
+                                <span>{{ validation.displayMessage['openBalance'] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Notes</label>
+                            <div class="input-wrapper">
+                                <textarea class="notes-input" id="notes" formControlName="notes" type="text"
+                                    autocomplete="off"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset [hidden]="linkExistingHidden">
+                        <div class="form-group">
+                            <label for="searchFinanceAgreement">Search Finance Agreement</label>
+                            <div class="input-wrapper">
+                                <input (click)="showLoans()" id="searchFinanceAgreement"
+                                    formControlName="searchFinanceAgreement" type="name"
+                                    (input)="search(personalItemForm.controls['searchFinanceAgreement'].value)"
+                                    autocomplete="off">
+                                <div class="list-wrapper">
+                                    <ul class="list-group" [hidden]="hideLoans">
+                                        <li class="list-group-item" (click)="selectLoan(loan)"
+                                            *ngFor="let loan of loansFiltered">{{loan.name}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="existingFinanceBalance">Finance Balance</label>
+                            <div class="input-wrapper">
+                                <input disabled id="existingFinanceBalance" formControlName="existingFinanceBalance"
+                                    type="text" autocomplete="off">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <button class="back-button" (click)="showStepOne()">Back</button>
+                    <button class="next-button step-two-next-button" (click)="showStepThree()">Next</button>
+
+                    <div class="skip">
+                        <a (click)="showStepThree()">Skip this Step</a>
+                    </div>
+                </fieldset>
+
+                <fieldset [hidden]="stepThreeHidden">
+                    <div class="form-group">
+                        <app-vault-upload-picture (sendPhoto)="getPhoto($event)"></app-vault-upload-picture>
+                    </div>
+
+                    <div>
+                        <button class="back-button" (click)="showStepTwo()">Back</button>
+                        <button class="next-button" (click)="addPersonalItem()">Add to Vault</button>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+</section>

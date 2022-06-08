@@ -1,0 +1,6 @@
+<button hidden class="notification ri-notification-line"><i></i></button>
+
+<button (click)="refresh()" class="refresh-button">
+    <i class="ri-refresh-line"></i>
+    <p>Latest update <span *ngIf="lastUpdateTime">{{lastUpdateTime}}</span></p>
+</button>

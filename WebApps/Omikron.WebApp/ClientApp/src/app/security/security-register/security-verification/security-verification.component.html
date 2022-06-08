@@ -1,0 +1,60 @@
+<form class="form-sign-up sms-verification" #f="ngForm"   *ngIf="!showVerificationCode" [formGroup]="phoneForm">
+    <h3>SMS Verification</h3>
+    <h4>Please enter your mobile number. We need this to help verify your identity and secure your account.</h4>
+    <div class="form-group telephone-wrapper" >
+        <label for="telephone">Phone Number</label>
+        <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['phone'] && phoneForm.touched, 'show-success': phoneForm.touched && f.form.valid}">
+            <ngx-intl-tel-input [cssClass]="'custom'"  id="telephone"
+                    [onlyCountries]="countries"
+                    [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+                    [selectedCountryISO]="CountryISO.UnitedKingdom" [maxLength]="15"
+                    [phoneValidation]="true" [separateDialCode]="false"
+                    [numberFormat]="PhoneNumberFormat.National" name="phone" formControlName="phone">
+            </ngx-intl-tel-input>
+            <span *ngIf="validation.displayMessage['phone'] && phoneForm.touched">{{ validation.displayMessage['phone'] }}</span>
+            <span *ngIf="!validation.displayMessage['phone'] && !f.form.valid && phoneForm.touched">Invalid phone number.</span>
+            <span class="error-summary" *ngIf="errorMessage">{{errorMessage}}</span>
+        </div>
+    </div>
+    <div class="border-bottom border-secondary"></div>
+    <div class="btn-container">
+        <div class="col-left">
+            <button type="button" class="btn-submit btn-with-icon" (click)="back()"><i class="ri-arrow-left-line"></i>Back</button>
+        </div>
+        <div class="col-right">
+             <button type="button" class="btn-submit btn-right" [ngClass]="{'btn-submit-activated' : f.form.valid }" (click)="sendCode()">Continue</button>
+        </div>
+    </div>
+
+    <p>By continuing you will receive a one-time verification code to your phone number by SMS.
+        Message and data rates may apply.</p>
+</form>
+
+<form class="form-sign-up sms-verification" *ngIf="showVerificationCode">
+    <h3>Enter Code</h3>
+    <h4>Please enter the Verification code we just sent to {{this.formSignup.controls['phoneNumber'].value}}</h4>
+
+    <div class="form-group">
+        <div class="wrapper resent-code input-wrapper no-icon" [ngClass]="{'has-error': verifyNumber.touched && !verifyNumber.valid }">
+            <input id="verifycode" aria-labelledby="btVerify" [formControl]="verifyNumber" type="text" class="form-control">
+            <button type="button" class="button-with-icon" (click)="resendCode()">
+                <i class="ri-restart-line font-20px"></i>
+                Resend Code
+            </button>
+            <span *ngIf="verifyNumber.touched && !verifyNumber.valid">Please enter the verification code.</span>
+            <span class="error-summary" *ngIf="errorMessage">{{errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="border-bottom border-secondary"></div>
+    <div class="btn-container">
+        <div class="col-left">
+            <button type="button" class="btn-submit btn-with-icon" (click)="backPhoneNumber()"><i class="ri-arrow-left-line"></i>Back</button>
+        </div>
+        <div class="col-right">
+             <button type="button" id="btVerify" class="btn-submit btn-right" [ngClass]="{'btn-submit-activated'  : verifyNumber.valid }"  (click)="verifyTelephone()">Verify</button>
+        </div>
+    </div>
+</form>
+

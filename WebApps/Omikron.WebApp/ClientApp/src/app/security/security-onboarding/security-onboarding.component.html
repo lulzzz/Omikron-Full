@@ -1,0 +1,79 @@
+<div class="position-relative onboarding" [busyIndicator]="isBusy" [overlay]="true">
+    <form #form="ngForm" (ngSubmit)="form.valid && save()"
+        [class.was-validated]="errors?.length || (form.invalid && form.submitted && (form.dirty || form.touched))"
+        class="needs-validation login" novalidate>
+        <div>
+            <div class="title-layout">
+                <h2>Let's Start</h2>
+                <p class="font-size-15">Please enter some basic information so that we can easily onboard your account.
+                </p>
+            </div>
+            <div class="mb-2 notification error" *ngFor="let error of errors">
+                {{error}}
+            </div>
+            <div>
+                <div class="form-group image-content spliter">
+                    <div>
+                        <image [class]="'image rounded'" [src]="user.profilePhoto  || 'images/no-photo.png'"></image>
+                    </div>
+                    <div class="action">
+                        <label class="btn btn-primary" for="user.profilePhoto">
+                            Browse Image
+                            <input id="user.profilePhoto" [hidden]="true" type="file" name="user.profilePhoto"
+                                ng2FileSelect [uploader]="uploader" />
+                        </label>
+                        <div class="font-size-12 text-neutral-4 mt-2">Please select an
+                            image file to upload which is not bigger than
+                            3MB. Allowed formats are .jpg, .png, .jpeg and .swg.</div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="text-neutral-6" for="firstName">First Name:</label>
+                    <div class="input-icon right-icon">
+                        <i class="fa fa-id-card-o"></i>
+                        <input #firstNameFormControl="ngModel" autofocus required type="text"
+                            [(ngModel)]="user.firstName" placeholder="First name" class="form-control" name="firstName"
+                            id="firstName">
+                    </div>
+
+                    <validation-error-message [form]="form" [control]="firstNameFormControl"
+                        errorRequired="First name is required.">
+                    </validation-error-message>
+                </div>
+                <div class="form-group spliter">
+                    <label class="text-neutral-6" for="lastName">Last Name:</label>
+                    <div class="input-icon right-icon">
+                        <i class="fa fa-id-card-o"></i>
+                        <input #lastNameFormControl="ngModel" autofocus required type="text" [(ngModel)]="user.lastName"
+                            placeholder="Last name" class="form-control" name="lastName" id="lastName">
+                    </div>
+
+                    <validation-error-message [form]="form" [control]="lastNameFormControl"
+                        errorRequired="Last name is required.">
+                    </validation-error-message>
+                </div>
+                <div class="form-group spliter">
+                    <label class="text-neutral-6" for="phoneNumber">Phone Number:</label>
+                    <div class="input-icon right-icon">
+                        <i class="fa fa-phone"></i>
+                        <input #phoneNumberFormControl="ngModel" pattern="^\+\d*" autofocus type="text" minlength="6"
+                            maxlength="20" [(ngModel)]="user.phoneNumber" placeholder="Phone Number (+41 XXX XXX)"
+                            class="form-control" name="phoneNumber" id="phoneNumber">
+                    </div>
+
+                    <validation-error-message [form]="form" [control]="phoneNumberFormControl"
+                        errorPattern="The phone number must start with '+' and contain only digit characters, no spaces allowed."
+                        errorRequired="Phone Number is required."
+                        errorMaxLength="The phone number must be max 20 characters long."
+                        errorMinLength="The phone number must be at least 6 characters long.">
+                    </validation-error-message>
+                </div>
+                <div class="form-group text-right">
+                    <a routerLink="/home" type="text" class="btn btn-link link mr-3">Skip</a>
+                    <button type="submit" class="btn btn-primary">Save and Continue</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

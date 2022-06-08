@@ -1,0 +1,112 @@
+@import "../../../styles/abstracts/media";
+
+.pop-up-window-omikron-vault {
+    background-color: white;
+    box-shadow: -24px 0px 80px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    width: 952px;
+    padding: 50px 100px 50px 100px;
+    margin: 110px 0 0 -140px;
+    position: relative;
+
+    @include media-xs {
+        margin: 130px 0 0 0px;
+        width: 100%;
+        padding: 50px 30px 15px 30px;
+    }
+
+    @include media-sm {
+        margin: 110px 0 0 -125px;
+        width: 752px;
+        padding: 50px 30px 15px 30px;
+    }
+
+    @include media-md {
+        margin: 110px 0 0 -220px;
+        padding: 50px 30px 15px 30px;
+    }
+
+    button {
+        border: none;
+        background: transparent;
+        color: #BBB;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        padding-right: 24px;
+    }
+
+    .exit {
+        padding-right: 0px;
+        position: absolute;
+        top: 36px;
+        right: 32px;
+        font-size: 20px;
+
+        @media (max-width: 600px) {
+            top: 20px;
+            right: 25px;
+        }
+    }
+
+    .center-div {
+        position: relative;
+        width: 100%;
+        padding: 50px 0 50px 0;
+        margin-left: 17%;
+        max-width: 464px;
+        color: #27292A;
+
+        @include media-xs {
+            margin-left: 0%;
+        }
+
+        ::ng-deep table {
+            img {
+                width: 32px;
+                height: 32px;
+            }
+
+            th {
+                border-bottom: 1px solid #BBB;
+            }
+
+            td {
+                cursor: pointer;
+                border-bottom: 1px solid #BBB;
+            }
+
+            td:hover .selectProvider {
+                opacity: 1;
+            }
+        }
+
+        ::ng-deep input {
+            background: #F3F3F8;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9-9-4.032-9-9 4.032-9 9-9zm0 16c3.867 0 7-3.133 7-7 0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7zm8.485.071l2.829 2.828-1.415 1.415-2.828-2.829 1.414-1.414z' fill='rgba(175,175,192,1)'/%3E%3C/svg%3E");
+            background-position: 16px 14px;
+            background-repeat: no-repeat;
+            border: none;
+            padding: 14px 16px 14px 45px;
+            font-size: 14px;
+            line-height: 20px;
+            height: 48px;
+            width: 100%;
+            color: black;
+            margin-bottom: 24px;
+            border-radius: 6px;
+
+            &:focus {
+                @extend input;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9-9-4.032-9-9 4.032-9 9-9zm0 16c3.867 0 7-3.133 7-7 0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7zm8.485.071l2.829 2.828-1.415 1.415-2.828-2.829 1.414-1.414z' fill='rgba(175,175,192,1)'/%3E%3C/svg%3E");
+                background-position: 16px 14px;
+                background-repeat: no-repeat;
+                border: 2px solid #958AF8 !important;
+            }
+
+            &:hover {
+                @extend input;
+            }
+        }
+    }
+}

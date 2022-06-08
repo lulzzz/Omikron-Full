@@ -1,0 +1,191 @@
+.cards-wraper {
+    margin-top: 35px;
+    .box-wraper {
+        border: 1px solid #e4e4e7;
+        border-radius: 4px;
+        padding: 30px 40px 10px 25px;
+        &:first-child {
+            @media (max-width: 600px) {
+                margin-top: 30px;
+            }
+            @media (min-width: 768px) and (max-width: 991px) {
+                margin-top: 30px;
+            }
+        }
+        @media (max-width: 600px) {
+            margin-bottom: 30px;
+            padding: 30px 10px 10px 10px;
+        }
+        @media (min-width: 768px) and (max-width: 991px) {
+            margin-bottom: 20px;
+        }
+
+        .box-heading {
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .box-footer {
+            a {
+                padding-bottom: 8px;
+                text-transform: uppercase;
+            }
+        }
+
+        p {
+            color: #bbbbbb;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            margin-bottom: 25px;
+            @media (max-width: 600px) {
+                font-size: 13px;
+            }
+        }
+
+        h2 {
+            color: #242424;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            margin-bottom: 5px;
+        }
+
+        strong {
+            color: #242424;
+            float: right;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            margin-top: 10px;
+            @media (max-width: 600px) {
+                font-size: 13px;
+            }
+        }
+
+        .content {
+            min-height: 350px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 350px;
+            padding: 10px;
+            @media (min-width: 992px) and (max-width: 1199px) {
+                min-height: 535px;
+            }
+
+            &::-webkit-scrollbar {
+                background: #e4e4e7;
+                border-radius: 8px;
+                width: 4px;
+                height: 10px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #958af8;
+                border-radius: 8px;
+            }
+
+            .ri-wallet-fill {
+                background-color: #958af8;
+            }
+
+            .ri-coin-fill {
+                background-color: #32b67a;
+            }
+
+            .ri-vip-diamond-fill {
+                background-color: #ffc24a;
+            }
+
+            .ri-flashlight-fill {
+                background-color: #a2ddff;
+            }
+
+            .ri-community-fill {
+                background-color: #fc6b32;
+            }
+
+            .ri-bank-card-fill {
+                background-color: #005397;
+            }
+
+            .ri-hand-coin-fill {
+                background-color: #ef3e4a;
+            }
+
+            .ri-bank-fill {
+                background-color: #ce7182;
+            }
+
+            .ri-file-list-3-line {
+                background-color: #fb9b2a;
+            }
+
+            .ri-user-6-fill {
+                background-color: #005397;
+            }
+
+            .ri-car-fill {
+                background-color: #e86e61;
+            }
+
+            .icon-wrap {
+                margin-top: 15px;
+            }
+
+            .row:last-child {
+                p {
+                    border: 0;
+                }
+            }
+
+            i {
+                color: #ffffff;
+                font-size: 16px;
+                padding: 8px;
+                border-radius: 8px;
+            }
+
+            p {
+                border-bottom: 1px solid #e4e4e7;
+                padding-top: 15px;
+                padding-bottom: 20px;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 150%;
+                color: #242424;
+                margin-bottom: 5px;
+                strong {
+                    float: right;
+                    color: #242424;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 150%;
+                    margin-top: 0px;
+                    @media (max-width: 600px) {
+                        font-size: 13px;
+                    }
+                }
+                @media (max-width: 600px) {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        a {
+            color: #958af8;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            line-height: 20px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e4e4e7;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

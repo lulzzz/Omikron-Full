@@ -1,0 +1,28 @@
+<div class="center-div text-center" *ngIf="responseState">
+    <img src="../images/response-success.svg" class="mb-32">
+
+    <h3>Account Successfully Added</h3>
+    <div *ngIf="registration">
+        <p >You have successfully added your first account. <br>
+            You can now start enjoying OMIKRON or you can add <br class="disabled"> another account.</p>
+        <button type="submit" [class.button-disabled]="buttonDisabled" class="btn-submit-activated mb-32" (click)="dashboardRoute()">Go to dashboard</button>
+        <a class="add-account-text pe-auto" (click)="addAccount()">Add Another Account</a>
+    </div>
+    <div *ngIf="!registration">
+        <p >You have successfully added your account. <br>
+            You can now go back to OMIKRON or you can add <br class="disabled"> another account.</p>
+        <button type="submit" [class.button-disabled]="buttonDisabled" class="btn-submit-activated mb-32" (click)="vaultRoute()">Go to Vault</button>
+        <a class="add-account-text pe-auto" (click)="addAccount()">Add Another Account</a>
+    </div>
+
+
+</div>
+
+<div class="center-div text-center" *ngIf="!responseState">
+    <img src="../images/response-fail.svg" class="mb-32">
+    <h3>Oops! Something went wrong.</h3>
+    <p>We ran into a problem trying to add your account</p>
+
+    <button type="submit" class="btn-submit-activated mb-32" (click)="addAccount()">Try Again</button>
+    <p class="add-account-text" (click)="redirectToHome()">I'll Add My Account Later<p>
+</div>

@@ -1,0 +1,165 @@
+/*****************************************************
+	Custom styling example bellow.
+*****************************************************/
+
+.iti {
+    display: block !important;
+    margin-bottom: 20px;
+}
+.iti__flag-box,
+.iti__country-name {
+    margin-right: 6px;
+    display: inline-block !important;
+    color: black !important;
+}
+.iti__flag-box,
+.iti__country-name,
+.iti__dial-code {
+    vertical-align: middle;
+    display: inline-block !important;
+    color: black !important;
+}
+.iti .dropdown-menu.country-dropdown {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-color: #c7cace;
+    margin-top: -1px;
+}
+
+.iti .iti__country-list {
+    box-shadow: none;
+    font-size: 16px;
+    margin-left: 0;
+    width: 244px;
+    max-height: 170px;
+}
+
+.iti__flag-container.open + input {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.iti .search-container input {
+    font-size: 16px;
+    border-color: #c7cace;
+    border-radius: 0;
+    padding: 5px 10px;
+}
+
+.iti .search-container input:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 479px) {
+    .iti .iti__country-list {
+        width: 88.3vw;
+    }
+}
+.telephone-wrapper {
+    .input-wrapper {
+        > span {
+            margin-top: -12px !important;
+        }
+    }
+}
+ngx-intl-tel-input input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    border: 1px solid transparent;
+    height: 48px;
+}
+
+ngx-intl-tel-input .iti .search-container input {
+    color: black;
+}
+
+ngx-intl-tel-input .iti .iti__country-list {
+    width: 460px;
+}
+
+ngx-intl-tel-input .iti__arrow {
+    border-top: 4px solid #fff;
+}
+
+ngx-intl-tel-input.ng-invalid.ng-touched input {
+    border: 1px solid #e86e61;
+}
+
+ngx-intl-tel-input.ng-invalid.ng-touched .iti--allow-dropdown {
+    &:before {
+        height: 100%;
+        width: 3px;
+        position: absolute;
+        top: 11px;
+        right: 24px;
+        content: "";
+        font-family: "remixicon" !important;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        color: #e86e61;
+        content: "\eb97";
+        color: #e86e61;
+    }
+}
+
+ngx-intl-tel-input input:hover {
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.24);
+}
+
+ngx-intl-tel-input input:focus {
+    outline: none !important;
+    border: 1px solid;
+    border-color: #fff;
+    box-shadow: 0 0 0 0 #000;
+}
+
+ngx-intl-tel-input input::-webkit-input-placeholder {
+    color: #bac2c7;
+}
+
+ngx-intl-tel-input input:-ms-input-placeholder {
+    color: #bac2c7;
+}
+
+ngx-intl-tel-input input::-ms-input-placeholder {
+    color: #bac2c7;
+}
+
+ngx-intl-tel-input input::placeholder {
+    color: #bac2c7;
+}
+
+ngx-intl-tel-input input[disabled] {
+    background-color: #e5eaf1;
+}
+
+.edit-profile-version {
+    .iti.iti--allow-dropdown{
+        &:before {
+            content: "" !important;
+        }
+    }
+    input {
+        width: 100%;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #e4e4e7;
+        color: #27292a;
+
+        &:focus {
+            border: 1px solid #e4e4e7;
+        }
+    }
+    .iti__arrow {
+        border-top: 4px solid #afafc0;
+    }
+
+    .iti__selected-flag {
+        border-right: 1px solid #d2d2d6;
+        height: 55%;
+        margin-top: 22%;
+    }
+}

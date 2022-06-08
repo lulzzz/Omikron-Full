@@ -1,0 +1,130 @@
+<section class="filters-wraper">
+    <div class="filters-button">
+        <button (click)="toggleFilters()"><i [class.filters-displayed]="showFilters"
+                class="ri-equalizer-fill"></i>Filters</button>
+    </div>
+    <div class="all-filters" *ngIf="showFilters">
+        <div class="row">
+            <div [id]="assetLiabilityTypeFiltersId" class="col-md-3">
+                <p>Asset / Liability type</p>
+                <div class="dropdown z-5">
+                    <input type="checkbox" id="my-dropdown" value="" name="my-checkbox">
+                    <label for="my-dropdown" data-toggle="dropdown">
+                        {{assetLiabilityTypeFiltersValue}}
+                    </label>
+                    <ul>
+                        <li class="select-all-filter" (click)="selectAllFilters(assetLiabilityTypeFiltersId)"><a>All
+                                <label class="checkbox">
+                                    <input type="checkbox" disabled checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </a></li>
+                        <li *ngFor="let x of assetLiabilityTypes">
+                            <a (click)="toggleFilter(assetLiabilityTypeFiltersId, x)">{{x}}
+                                <label class="checkbox">
+                                    <input [id]="x" disabled type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div [id]="vaultEntryFiltersId" class="col-md-3">
+                <p>Vault Entry</p>
+                <div class="dropdown z-4">
+                    <input type="checkbox" id="my-dropdown2" value="" name="my-checkbox">
+                    <label for="my-dropdown2" data-toggle="dropdown">
+                        {{vaultEntryFiltersValue}}
+                    </label>
+                    <ul>
+                        <li class="select-all-filter" (click)="selectAllFilters(vaultEntryFiltersId)">
+                            <a>All
+                                <label class="checkbox">
+                                    <input type="checkbox" disabled checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </a>
+                        </li>
+
+                        <li *ngFor="let g of vaultEntryListViewModel">
+                            <label>{{g.groupName}}</label>
+                            <ul>
+                                <li *ngFor="let vaultEntry of g.vaultEntries">
+                                    <a (click)="toggleFilter(vaultEntryFiltersId, vaultEntry.vaultEntryId)">{{vaultEntry.vaultEntryName}}
+                                        <label class="checkbox">
+                                            <input [id]="vaultEntry.vaultEntryId" type="checkbox" disabled checked="checked">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="select-all-filter" (click)="toggleFilter(vaultEntryFiltersId, archivedAccountsId)">
+                            <a>Archived
+                                <label class="checkbox">
+                                    <input id="archivedAccounts" type="checkbox" disabled checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div [id]="incomeExpenditureFiltersId" class="col-md-3">
+                <p>Income/Expenditure Category</p>
+                <div class="dropdown z-3">
+                    <input type="checkbox" id="my-dropdown3" value="" name="my-checkbox">
+                    <label for="my-dropdown3">
+                        {{incomeExpenditureFiltersValue}}
+                    </label>
+                    <ul>
+                        <li class="select-all-filter" (click)="selectAllFilters(incomeExpenditureFiltersId)"><a>All
+                                <label class="checkbox">
+                                    <input type="checkbox" disabled checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </a></li>
+                        <li *ngFor="let c of categoriesList">
+                            <a (click)="toggleFilter(incomeExpenditureFiltersId, c)">{{c}}
+                                <label class="checkbox">
+                                    <input [id]="c" type="checkbox" disabled checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <p>Time Period</p>
+                <div class="dropdown">
+                    <input type="checkbox" id="my-dropdown4" value="" name="my-checkbox">
+                    <label for="my-dropdown4" data-toggle="dropdown">
+                        {{timePeriod}}
+                    </label>
+                    <ul>
+                        <li (click)="setTimePeriod(timePeriodEnum.Month)">
+                            <a>Month
+                                <label class="checkbox">
+                                    <input type="checkbox" disabled [checked]="timePeriod === timePeriodEnum.Month">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </a>
+                        </li>
+                        <li (click)="setTimePeriod(timePeriodEnum.Year)"><a>Year
+                                <label class="checkbox">
+                                    <input id="yearCheckbox" disabled type="checkbox"
+                                        [checked]="timePeriod === timePeriodEnum.Year">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

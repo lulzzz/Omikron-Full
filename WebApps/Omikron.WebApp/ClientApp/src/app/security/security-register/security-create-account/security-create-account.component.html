@@ -1,0 +1,72 @@
+<form *ngIf="formSignup" class="form-sign-up" [formGroup]="formSignup" autocomplete="off">
+    <h3 class="font-24px font-weight-bold">Create account</h3>
+    <p class="white-50 font-18px mb-4">Enter your details and create password to sign up</p>
+
+    <div class="form-group">
+        <label for="nickname" class="font-12px white-50 font-weight-600">Nickname</label>
+        <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['nickname'], 'show-success': formSignup.controls['nickname'].valid}">
+            <input id="nickname" formControlName="nickname" type="name" class="form-control line-height-20"
+                placeholder="Enter your nickname" autocomplete="off">
+            <span>{{ validation.displayMessage['nickname'] }}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="font-12px white-50 font-weight-600">Email</label>
+        <div class="input-wrapper" [ngClass]="{'has-error': validation.displayMessage['email'], 'show-success': formSignup.controls['email'].valid}">
+        <input id="email" formControlName="email" type="text" class="form-control line-height-20" placeholder="Enter your email"  autocomplete="new-password" >
+            <span>{{ validation.displayMessage['email'] }}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="font-12px white-50 font-weight-600">Password</label>
+        <div class="input-group input-wrapper password-wrapper" [ngClass]="{'has-error': validation.displayMessage['password']}">
+            <input id="password" formControlName="password" class="form-control line-height-20"
+                [type]="passwordTextType ? 'text' : 'password'" placeholder="Enter your password">
+
+            <span>{{ validation.displayMessage['password'] }}</span>
+            <button class="input-group-text password-wrapper-button">
+                <i [ngClass]="{
+                            'ri-eye-close-line': !passwordTextType,
+                            'ri-eye-line': passwordTextType
+                            }" (click)="toggleFieldTextType()"></i>
+            </button>
+        </div>
+
+        <div class="mt-2 text-light">
+            <i class="ri-checkbox-circle-fill icon-18px"
+                [ngClass]="formSignup.controls['password'].hasError('required') || formSignup.controls['password'].hasError('minlength')  ? 'text-secondary' : 'text-success'"></i>
+            <span class="font-12px"> Minimum 8 characters </span>
+        </div>
+        <div class="text-light">
+            <i class="ri-checkbox-circle-fill icon-18px"
+                [ngClass]="formSignup.controls['password'].hasError('required') || formSignup.controls['password'].hasError('hasSmallCase')
+            || formSignup.controls['password'].hasError('hasCapitalCase') || formSignup.controls['password'].hasError('hasNumber') ? 'text-secondary' : 'text-success'"></i>
+            <span class="font-12px"> At least 1 uppercase, 1 lowercase, 1 number </span>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="border-bottom border-secondary form-group"></div>
+
+        <div >
+            <mat-checkbox formControlName="termsAndConditions"
+                                > Agree to <a class="font-weight-bold text-light" href="https://omikronmoney.io/terms-conditions" target="_blank"> T&Cs</a> and
+                                <a class="font-weight-bold text-light" href="https://omikronmoney.io/privacy-policy" target="_blank">Privacy Policy</a></mat-checkbox
+                            >
+                            <div class="input-wrapper checkbox" [ngClass]="{'has-error': validation.displayMessage['termsAndConditions']}">
+                                <span>{{ validation.displayMessage['termsAndConditions'] }}</span>
+                            </div>
+        </div>
+    </div>
+
+    <mat-checkbox formControlName="emailSubscription">OMIKRON and selected partners can send me emails</mat-checkbox>
+
+    <div class="border-bottom border-secondary mb-32px mb-top18px"></div>
+
+    <button type="button" (click)="submit()" class="btn-submit" [ngClass]="!formSignup.valid  ? 'btn-submit' : 'btn-submit-activated'">Create account</button>
+    <div class="text-center mt-4">
+        Already have an account? <a routerLink="/authenticate/login"><span class="font-weight-bold text-light">Log in </span></a>
+    </div>
+</form>

@@ -1,0 +1,27 @@
+<form [formGroup]="tokenVerificationForm" class="form-sign-up sms-verification" (ngSubmit)="verifyNumber(tokenVerificationForm.value)">
+    <h3>Enter Code</h3>
+    <h4>Please enter the Verification code we just sent to {{phoneNumber}}
+    </h4>
+
+    <div class="form-group telephone-wrapper">
+        <div class="wrapper resent-code"
+            [ngClass]="{'has-error': validation.displayMessage['number'], 'show-success': tokenVerificationForm.controls['number'].valid}">
+            <input formControlName="number" id="verifycode"  aria-labelledby="btVerify" type="text" class="form-control" autocomplete="off">
+            <button type="button" class="button-with-icon" (click)="resendCode()">
+                <i class="ri-restart-line font-20px"></i>
+                Resend Code
+            </button>
+            <span>{{ validation.displayMessage['number'] }}</span>
+        </div>
+    </div>
+
+    <div class="border-bottom border-secondary"></div>
+    <div class="btn-container">
+        <div class="col-left">
+            <button type="button" class="btn-submit btn-with-icon" (click)="onBackClick()"><i class="ri-arrow-left-line"></i>Back</button>
+        </div>
+        <div class="col-right">
+            <button type="submit" id="btVerify" class="btn-submit btn-right" [ngClass]="{'btn-submit-activated'  : tokenVerificationForm.valid }">Verify</button>
+        </div>
+    </div>
+</form>

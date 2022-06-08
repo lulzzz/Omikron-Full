@@ -1,0 +1,12 @@
+<div class="picture-border">
+    <label class="btn upload-picture" for="itemPhoto">
+        <img src="../../../images/Vault/image-blue.svg" alt="Upload image">
+        <p><strong>Click here</strong> <br> to upload your image</p>
+        <input id="itemPhoto" #uploaderRef [hidden]="true" type="file" name="itemPhoto"
+            ng2FileSelect [uploader]="uploader" (click)="onFileClick($event)" />
+    </label>
+</div>
+<div class="picture-container" *ngIf="itemPhoto">
+    <img src="../../../images/Vault/delete-icon.svg" class="delete" (click)="removePicture()">
+    <img alt="Item photo" [src]="itemPhoto  | blobAccessToken" class="picture" />
+</div>

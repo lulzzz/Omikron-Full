@@ -1,0 +1,12 @@
+<section class="delete-acc" *ngIf="!verification">
+    <h2>Delete Account</h2>
+    <p>When you delete your account you will loose access to OMIKRON and all data stored on the platform. This can’t be undone.</p>
+    <button class="keep-acc" (click)="hideModal()">Keep Account</button>
+    <button (click)="verifyAction()">Delete Account</button>
+</section>
+
+<div *ngIf="verification" class="verification" [busyIndicator]="isBusy">
+    <app-confirm-token [phoneNumber]="phoneNumber" (verify)="deleteAccount($event)"
+    (resend)="verifyAction()" (back)="hideModal()"></app-confirm-token>
+</div>
+

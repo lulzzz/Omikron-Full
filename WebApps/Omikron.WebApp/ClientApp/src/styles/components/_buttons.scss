@@ -1,0 +1,9 @@
+button:disabled,
+button[disabled]{
+    cursor: not-allowed;
+}
+
+.button-disabled{
+    pointer-events: none;
+    background-color: #BBBBBB !important;
+}

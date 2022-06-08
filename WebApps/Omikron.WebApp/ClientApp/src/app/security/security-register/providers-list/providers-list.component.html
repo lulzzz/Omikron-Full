@@ -1,0 +1,14 @@
+<input type="text" id="input" value placeholder="Search" [(ngModel)]='searchFilter' (ngModelChange)="SearchProviders()">
+
+<button type="submit" class="btn-submit-activated" (click)="addAccountManually()">Add Your Account Manually</button>
+
+<div [busyIndicator]="isBusy">
+    <table *ngFor="let item of providers | keyvalue" class="w-100" >
+        <th>{{item.key}}</th>
+        <tr *ngFor="let i of item.value">
+            <td [class.in-maintenance]="i.maintenanceStatus == maintenanceStatus.Active" (click)="openBankingLogin(i.provider)"> <img src='{{i.icon}}'>{{i.displayName}}
+                <span class="selectProvider">select <i class="ri-arrow-right-line icon-20px"></i></span></td>
+        </tr>
+    </table>
+</div>
+

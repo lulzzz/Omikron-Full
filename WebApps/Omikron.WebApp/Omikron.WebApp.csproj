@@ -1,0 +1,104 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <ScriptsFolder>scripts\</ScriptsFolder>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**;$(SpaRoot)dist</DefaultItemExcludes>
+    <ProjectGuid>{70F3AABC-5E4A-42F0-830D-ED844A86D706}</ProjectGuid>
+    <AssemblyName>Omni.WebApp</AssemblyName>
+    <OutputPath>bin\</OutputPath>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\dist\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\dist\**" />
+    <EmbeddedResource Remove="ClientApp\dist\**" />
+    <None Remove="ClientApp\dist\**" />
+    <Content Remove="$(SpaRoot)dist" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ClientApp\dist\ClientApp\es2015-polyfills.js" />
+    <None Remove="ClientApp\dist\ClientApp\es2015-polyfills.js" />
+    <None Remove="ClientApp\dist\ClientApp\es2015-polyfills.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\es2015-polyfills.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\favicon.ico" />
+    <None Remove="ClientApp\dist\ClientApp\favicon.ico" />
+    <None Remove="ClientApp\dist\ClientApp\index.html" />
+    <None Remove="ClientApp\dist\ClientApp\index.html" />
+    <None Remove="ClientApp\dist\ClientApp\main.js" />
+    <None Remove="ClientApp\dist\ClientApp\main.js" />
+    <None Remove="ClientApp\dist\ClientApp\main.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\main.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\polyfills.js" />
+    <None Remove="ClientApp\dist\ClientApp\polyfills.js" />
+    <None Remove="ClientApp\dist\ClientApp\polyfills.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\polyfills.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\runtime.js" />
+    <None Remove="ClientApp\dist\ClientApp\runtime.js" />
+    <None Remove="ClientApp\dist\ClientApp\runtime.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\runtime.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\styles.js" />
+    <None Remove="ClientApp\dist\ClientApp\styles.js" />
+    <None Remove="ClientApp\dist\ClientApp\styles.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\styles.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\vendor.js" />
+    <None Remove="ClientApp\dist\ClientApp\vendor.js" />
+    <None Remove="ClientApp\dist\ClientApp\vendor.js.map" />
+    <None Remove="ClientApp\dist\ClientApp\vendor.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\shared\forms\date-range-picker\" />
+    <Folder Include="ClientApp\src\app\shared\forms\tenant-picker\" />
+    <Folder Include="ClientApp\src\app\shared\forms\validation\" />
+    <Folder Include="ClientApp\src\fonts\" />
+    <Folder Include="ClientApp\src\images\" />
+    <Folder Include="ClientApp\src\scripts\" />
+  </ItemGroup>
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+  <!-- Ensure docker is installed -->
+  <Target Name="ContainerVerifyDockerInstallation" BeforeTargets="Build=">
+    <Exec Command="docker --version" EchoOff="true" IgnoreExitCode="true">
+      <Output PropertyName="_ExitCode" TaskParameter="ExitCode" />
+    </Exec>
+    <ContainerError Condition="$(_ExitCode) != 0" ErrorName="ErrorDockerNotInstalled" />
+  </Target>
+  <Target Name="CustomBuild" BeforeTargets="BeforeCompile">
+    <Message Importance="high" Text="Building container project." />
+    <MakeDir Directories="$(OutputPath)" Condition="!Exists('$(OutputPath)')" />
+    <Csc Sources="@(Compile)" OutputAssembly="$(OutputPath)$(AssemblyName).exe" />
+    <Message Importance="high" Text="Building project in $(SpaRoot)." />
+    <!--<Exec WorkingDirectory="$(ScriptsFolder)" Command="powershell .\build.ps1" />-->
+  </Target>
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>

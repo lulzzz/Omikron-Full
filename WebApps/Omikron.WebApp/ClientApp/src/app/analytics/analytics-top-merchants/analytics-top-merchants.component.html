@@ -1,0 +1,22 @@
+<section class="top-merchants">
+    <h2>Top Merchants<small>{{merchantContainerViewModel?.numberOfMerchants}} Merchants •
+            {{merchantContainerViewModel?.totalValue | currency:merchantContainerViewModel?.currency}}</small></h2>
+    <div class="merchants-container">
+
+        <div *ngFor="let m of merchantContainerViewModel?.merchants" class="box-wraper">
+            <div class="box">
+                <div class="header-box">
+                    <img [src]="m?.logo" alt="Merchant Logo">
+                </div>
+                <div class="bottom-box">
+                    <h2><small>Value</small><strong>{{m?.amount | currency:
+                            m?.currency}}</strong></h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <button (click)="nextPage()" *ngIf="showLoadMoreButton">Load More</button>
+    </div>
+</section>

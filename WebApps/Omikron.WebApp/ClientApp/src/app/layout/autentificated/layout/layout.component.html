@@ -1,0 +1,11 @@
+<div class="container-fluid h-100">
+    <div class="row dashboard h-100" >
+        <div [ngClass]="navigationClosed ? 'closed-navigation' : 'col-md-2'" class="overflow-auto">
+            <app-sidebar (navigationEvent)="changeNavigation($event)"></app-sidebar>
+        </div>
+        <div id="mainContent" (scroll)="changeHeaderBackground()" [ngClass]="navigationClosed ? 'closed-navigation-workflow' : 'col-md-10'" class="workflow overflow-auto">
+            <app-sticky-header></app-sticky-header>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

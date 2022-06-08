@@ -1,0 +1,51 @@
+@import "../../../../styles/abstracts/media";
+
+button {
+    padding: 10px 20px 10px 20px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #e4e4e7;
+    border-radius: 4px;
+    float: right;
+    position: relative;
+    vertical-align: middle;
+
+    @include media-xs {
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-left: 25px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #242424;
+        @media (min-width: 768px) and (max-width: 991px)
+        {
+            font-size: 12px;
+        }
+    }
+}
+
+.ri-refresh-line:before {
+    padding-right: 10px;
+    font-size: 18px;
+    position: absolute;
+    left: 14px;
+    top: 6px;
+}
+.ri-notification-line:before {
+    font-size: 19px;
+    color: #958af8;
+}
+.notification {
+    border: 1px solid #e4e4e7;
+    box-sizing: border-box;
+    border-radius: 30px;
+    margin-left: 10px;
+    padding: 5px 11px 5px 11px;
+    @media (max-width: 600px) {
+        float: right;
+    }
+}

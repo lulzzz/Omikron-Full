@@ -1,0 +1,65 @@
+<section class="pop-up-window-add-personal-item">
+    <button (click)="closeModal()" class="exit"><span class="ri-close-line"></span></button>
+    <h2>Edit Personal Item</h2>
+    <div class="links">
+        <div class="add-new-form" cdkScrollable>
+
+            <form [formGroup]="personalItemForm">
+
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <div class="input-wrapper"
+                        [ngClass]="{'has-error': validation.displayMessage['itemName'], 'show-success': personalItemForm.controls['itemName'].valid}">
+                        <input id="itemName" formControlName="itemName" type="name" autocomplete="off">
+                        <span>{{ validation.displayMessage['itemName'] }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="value">Value</label>
+                    <div class="input-wrapper"
+                        [ngClass]="{'has-error': validation.displayMessage['value'], 'show-success': personalItemForm.controls['value'].valid}">
+                        <input id="value" formControlName="value" type="number" autocomplete="off">
+                        <span>{{ validation.displayMessage['value'] }}</span>
+                    </div>
+                </div>
+
+                <div *ngIf="hasFinance != undefined">
+                    <div class="form-group">
+                        <label for="financeAgreementName">Finance Agreement Name</label>
+                        <div class="input-wrapper">
+                            <input id="financeAgreementName" formControlName="financeAgreementName" type="text"
+                                autocomplete="off">
+                            <span>{{ validation.displayMessage['financeAgreementName'] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newFinanceBalance">Finance Balance</label>
+                        <div class="input-wrapper"
+                            [ngClass]="{'has-error': validation.displayMessage['newFinanceBalance'], 'show-success': personalItemForm.controls['newFinanceBalance'].valid}">
+                            <input id="newFinanceBalance" formControlName="newFinanceBalance" type="number"
+                                autocomplete="off">
+                            <span>{{ validation.displayMessage['newFinanceBalance'] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes</label>
+                        <div class="input-wrapper">
+                            <textarea class="notes-input" id="notes" formControlName="notes" type="text"
+                                autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <app-vault-upload-picture (sendPhoto)="getPhoto($event)" [itemPhoto]="itemPhoto" [editMode]="true"></app-vault-upload-picture>
+                </div>
+
+                <button class="back-button" (click)="backToPersonalItemDetails()">Back</button>
+                <button class="next-button step-two-next-button" (click)="updatePersonalItem()">Save</button>
+            </form>
+        </div>
+    </div>
+</section>

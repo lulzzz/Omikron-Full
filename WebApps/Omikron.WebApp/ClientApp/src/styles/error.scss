@@ -1,0 +1,45 @@
+@import "variables";
+
+.notification {
+    padding: 10px;
+    font-size: 15px;
+    text-align: left;
+
+    &.error {
+        background: #fdeaea;
+        border-left: 5px solid $color-danger-red;
+        color: $color-danger-red;
+    }
+
+    &.success {
+        background: #f6fffb;
+        border-left: 5px solid $color-success-green;
+        color: $color-success-green;
+    }
+
+    &.warning {
+        background: #fff3ef;
+        border-left: 5px solid $color-warning-orange;
+        color: $color-warning-orange;
+    }
+}
+
+.error-pages {
+    color: $color-app-dark-blue;
+
+    .error-code {
+        line-height: 1;
+        color: #ee7d46;
+        font-size: 250px;
+        font-weight: 700;
+    }
+
+    .error-code-image {
+        width: 500px;
+    }
+
+    .title {
+        font-size: 35px;
+        font-weight: 700;
+    }
+}

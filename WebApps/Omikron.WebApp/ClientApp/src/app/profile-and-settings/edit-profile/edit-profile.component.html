@@ -1,0 +1,55 @@
+<section class="edit-profile" *ngIf="!verification">
+    <h2>Edit Profile Details</h2>
+    <form [formGroup]="editProfileForm" autocomplete="off">
+
+        <input autofocus="autofocus" hidden>
+
+        <div class="form-group">
+            <label for="nickname">Your Nickname</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['nickname'], 'show-success': editProfileForm.controls['nickname'].valid}">
+                <input id="nickname" formControlName="nickname" type="name" placeholder="Enter your nickname"
+                    autocomplete="off">
+                <span>{{ validation.displayMessage['nickname'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['email'], 'show-success': editProfileForm.controls['email'].valid}">
+                <input id="email" formControlName="email" type="email" placeholder="Enter your email"
+                    autocomplete="off">
+                <span>{{ validation.displayMessage['email'] }}</span>
+            </div>
+        </div>
+
+        <div class="form-group telephone-wrapper">
+            <label for="telephone">Your Phone Number</label>
+            <div class="input-wrapper"
+                [ngClass]="{'has-error': validation.displayMessage['phoneNumber'] || editProfileForm.controls['phoneNumber'].invalid, 'show-success': editProfileForm.controls['phoneNumber'].valid}">
+                <ngx-intl-tel-input id="telephone" [onlyCountries]="[CountryISO.UnitedKingdom, CountryISO.BosniaAndHerzegovina]"
+                    class="edit-profile-version" [enableAutoCountrySelect]="true" [cssClass]="'phone-input'"
+                    [enablePlaceholder]="true" [searchCountryFlag]="true"
+                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                    [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.UnitedKingdom" [maxLength]="15"
+                    [phoneValidation]="true" [separateDialCode]="false" [numberFormat]="PhoneNumberFormat.National"
+                    name="phone" formControlName="phoneNumber">
+                </ngx-intl-tel-input>
+                <span *ngIf="editProfileForm.controls['phoneNumber'].errors?.required">Please enter your phone
+                    number.</span>
+                <span *ngIf="editProfileForm.controls['phoneNumber'].errors?.validatePhoneNumber">Please enter valid
+                    number for selected country.</span>
+            </div>
+        </div>
+    </form>
+
+    <button class="cancel-button" (click)="closeModal()">Cancel</button>
+    <button class="save-button" (click)="submit()"
+        [ngClass]="{'save-button-activated': editProfileForm?.touched}">Save</button>
+</section>
+
+<div *ngIf="verification" class="verification">
+    <app-confirm-token [phoneNumber]="phoneNumber" (verify)="editProfile($event)" (resend)="submit()"
+        (back)="hideVerification()"></app-confirm-token>
+</div>

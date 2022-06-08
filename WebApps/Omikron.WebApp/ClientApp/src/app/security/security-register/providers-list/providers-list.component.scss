@@ -1,0 +1,86 @@
+.selectProvider {
+    opacity: 0;
+    color: #958af8;
+    position: absolute;
+    right: 0;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+}
+
+.in-maintenance {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+table {
+    img {
+        width: 32px;
+        height: 32px;
+    }
+    td {
+        cursor: pointer;
+    }
+    td:hover .selectProvider {
+        opacity: 1;
+    }
+}
+
+input {
+    background: rgba(255, 255, 255, 0.16);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9-9-4.032-9-9 4.032-9 9-9zm0 16c3.867 0 7-3.133 7-7 0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7zm8.485.071l2.829 2.828-1.415 1.415-2.828-2.829 1.414-1.414z' fill='rgba(255,255,255,0.5)'/%3E%3C/svg%3E");
+    background-position: 16px 14px;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 14px 16px 14px 45px;
+    font-size: 16px;
+    line-height: 20px;
+    height: 48px;
+    width: 100%;
+    color: white;
+    margin-bottom: 24px;
+    border-radius: 6px;
+
+    &:focus {
+        @extend input;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9-9-4.032-9-9 4.032-9 9-9zm0 16c3.867 0 7-3.133 7-7 0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7zm8.485.071l2.829 2.828-1.415 1.415-2.828-2.829 1.414-1.414z' fill='rgba(255,255,255,0.5)'/%3E%3C/svg%3E");
+        background-position: 16px 14px;
+        background-repeat: no-repeat;
+        border: 1px solid white !important;
+    }
+
+    &:hover {
+        @extend input;
+        background: rgba(255, 255, 255, 0.24);
+    }
+}
+
+::placeholder {
+    color: #afafc0 !important;
+}
+
+::-ms-input-placeholder {
+    color: #afafc0 !important;
+}
+
+::ng-deep .loading-spinner {
+    &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        z-index: 100;
+        width: 64px;
+        height: 64px;
+        margin-left: -32px;
+        margin-top: -32px;
+        border: 2px solid #958af8;
+        border-radius: 50%;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        animation: cssload-spin 800ms infinite linear;
+        -o-animation: cssload-spin 800ms infinite linear;
+        -ms-animation: cssload-spin 800ms infinite linear;
+        -webkit-animation: cssload-spin 800ms infinite linear;
+        -moz-animation: cssload-spin 800ms infinite linear;
+    }
+}

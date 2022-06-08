@@ -1,0 +1,220 @@
+@import "../../../styles/abstracts/media";
+
+.filters-wraper {
+    margin-top: 205px;
+    @include media-xs{
+        margin-top: 20px;
+    }
+
+    @include media-sm{
+        margin-top: 20px;
+    }
+
+    .filters-button {
+        overflow: hidden;
+        button {
+            padding: 10px 16px 10px 16px;
+            border: 1px solid #e4e4e7;
+            box-sizing: border-box;
+            border-radius: 4px;
+            background: #ffffff;
+            color: #242424;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            float: right;
+            i {
+                margin-right: 8px;
+                vertical-align: middle;
+            }
+        }
+        .filters-displayed {
+            color: #958af8;
+        }
+    }
+    .all-filters {
+        color: #333;
+        width: 100%;
+        p {
+            color: #afafc0;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 18px;
+            margin-bottom: 8px;
+        }
+
+        @include media-xs {
+            .z-5{
+                z-index: 5;
+            }
+
+            .z-4{
+                z-index: 4;
+            }
+
+            .z-3{
+                z-index: 3;
+            }
+        }
+
+        .dropdown ul li > label {
+            display: block;
+            padding: 16px;
+            text-decoration: none;
+            color: #27292a;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            position: relative;
+        }
+        .dropdown ul li ul {
+            padding-left: 0px;
+        }
+        .dropdown ul li ul li {
+            list-style: none;
+            a {
+                color: #afafc0;
+                padding-left: 30px;
+                padding-right: 30px;
+
+                @include media-xs {
+                    padding-right: 40px;
+                }
+            }
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .dropdown > input[type="checkbox"] {
+            position: absolute;
+            left: -100vw;
+        }
+        .dropdown > label {
+            width: 100%;
+            display: inline-block;
+            padding: 14px 46px 14px 16px;
+            color: #333;
+            line-height: 1.5em;
+            text-decoration: none;
+            border: 1px solid #e4e4e7;
+            cursor: pointer;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 6px;
+            position: relative;
+            background-color: #FFF;
+        }
+        .dropdown > label:after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            right: 20px;
+            top: 23px;
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 7px solid #000;
+        }
+        .dropdown > ul {
+            position: absolute;
+            z-index: 1;
+            display: block;
+            left: -100vw;
+            top: calc(1.5em + 14px);
+            border: 2px solid #958af8;
+            border-radius: 6px;
+            background: #ffffff;
+            padding: 6px 0;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 3px;
+            -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+        .dropdown > ul a {
+            display: block;
+            padding: 16px;
+            text-decoration: none;
+            color: #27292a;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            position: relative;
+            input {
+                float: right;
+                margin-top: 4px;
+            }
+            .checkbox {
+                float: right;
+                cursor: pointer;
+            }
+            .checkbox input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+            .checkmark {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                height: 20px;
+                width: 20px;
+                background: #ffffff;
+                border: 2px solid #958af8;
+                border-radius: 4px;
+            }
+            .checkbox:hover input ~ .checkmark {
+                background: #ffffff;
+                border: 2px solid #958af8;
+                border-radius: 4px;
+            }
+            .checkbox input:checked ~ .checkmark {
+                background-color: #958af8;
+                border: 2px solid #958af8;
+                border-radius: 4px;
+            }
+            .checkmark:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+            .checkbox input:checked ~ .checkmark:after {
+                display: block;
+            }
+            .checkbox .checkmark:after {
+                left: 6px;
+                top: 2px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+        }
+
+        .dropdown > ul a:hover,
+        .dropdown > ul a:focus {
+            background: #ececec;
+        }
+        .dropdown > input[type="checkbox"]:checked ~ ul,
+        .dropdown > ul:target {
+            left: 0;
+            margin-top: 25px;
+            padding: 0px 0px 10px 0px;
+        }
+    }
+}

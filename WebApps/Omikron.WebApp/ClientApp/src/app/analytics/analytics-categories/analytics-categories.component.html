@@ -1,0 +1,62 @@
+<section class="transactions position-relative">
+    <div class="date">
+        <p>{{date}}</p>
+    </div>
+    <h2>Transactions<small>A categorisation of you recent transactions</small></h2>
+    <table [busyIndicator]="isBusy">
+        <th>
+            <p>Spending</p>
+        </th>
+        <tbody *ngFor="let transaction of categoriesListViewModel?.expenditure">
+            <tr>
+                <td>
+                    <img src="../../../images/categories/{{transaction.icon}}" (error)="onImageError($event)" alt="Expenditure category icon">
+                    <p>{{transaction.categoryName}}</p>
+                </td>
+                <td class="transactions-count">{{transaction.numberOfTransactions}} transaction<span
+                        *ngIf="transaction.numberOfTransactions !== 1">s</span></td>
+                <td>{{transaction.amount | currency: 'GBP'}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="total-expenditure">
+                <td>
+                    <p>Total Expenditure</p>
+                </td>
+                <td class="transactions-count">{{categoriesListViewModel?.totalNumberOfExpenditureTransactions}}
+                    transaction<span
+                        *ngIf="categoriesListViewModel?.totalNumberOfExpenditureTransactions !== 1">s</span></td>
+                <td>{{categoriesListViewModel?.totalExpenditure | currency: 'GBP'}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table [busyIndicator]="isBusy">
+        <th>
+            <p>Income</p>
+        </th>
+        <tbody *ngFor="let transaction of categoriesListViewModel?.income">
+            <tr>
+                <td>
+                    <img src="../../../images/categories/{{transaction.icon}}" (error)="onImageError($event)" alt="Income category icon">
+                    <p>{{transaction.categoryName}}</p>
+                </td>
+                <td class="transactions-count">{{transaction.numberOfTransactions}} transaction<span
+                        *ngIf="transaction.numberOfTransactions !== 1">s</span></td>
+                <td>{{transaction.amount | currency: 'GBP'}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="total-income">
+                <td>
+                    <p>Total Income</p>
+                </td>
+                <td class="transactions-count">{{categoriesListViewModel?.totalNumberOfIncomeTransactions}}
+                    transaction<span *ngIf="categoriesListViewModel?.totalNumberOfIncomeTransactions !== 1">s</span>
+                </td>
+                <td>+{{categoriesListViewModel?.totalIncome | currency: 'GBP'}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</section>

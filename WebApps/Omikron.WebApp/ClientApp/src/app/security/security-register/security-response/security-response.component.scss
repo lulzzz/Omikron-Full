@@ -1,0 +1,49 @@
+@import "../../../../styles/abstracts/media";
+
+.center-div{
+    position: relative;
+    width: 100%;
+    left: 25%;
+    padding: 150px 0 100px 0;
+    max-width: 464px;
+
+    h3{
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 32px;
+    }
+
+    p{
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 18px;
+        margin-bottom: 32px;
+    }
+
+    .add-account-text{
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    @include media-xs{
+        left: 2.5%;
+        width: 95%;
+        .disabled{
+            display: none;
+        }
+    }
+
+    @include media-sm{
+        left: 20%;
+    }
+
+    @include media-md{
+        left: 20%;
+    }
+}
+
+.mb-32{
+    margin-bottom: 32px;
+}

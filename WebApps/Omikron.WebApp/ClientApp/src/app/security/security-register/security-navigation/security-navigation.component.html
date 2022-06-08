@@ -1,0 +1,21 @@
+<nav>
+    <div class='logo-area'><img src="../images/omikron-logo-white.svg" alt="omikron-logo" class="logo-side-bar"></div>
+        <input class="check" type="checkbox">
+        <div class="ham-menu mt-5" *ngIf="registration.activeStep<5">
+            <div class="menuline"></div>
+        </div>
+            <ul class='menulist h-100' *ngIf="registration.activeStep<5">
+                <li [ngClass]="registration.passedStep===1 ? '' : 'disabled'"><a (click)="setupStep(0)">
+                    <i class="ri-user-line icon-box"></i>
+                    <p class="mt-2 font-14px line-height-20">Create Account</p></a></li>
+                <div class="horizontal-line "></div>
+                <li [ngClass]="registration.passedStep===1 ? '' : 'disabled'"><a (click)="setupStep(1)"><i class="ri-smartphone-line " [ngClass]="registration.passedStep<1 ? 'icon-box-disabled': 'icon-box'"></i>
+                    <p class="mt-2 font-14px" [ngClass]="registration.passedStep<1 ? 'white-50': 'text-light'">SMS Verification</p></a></li>
+                <div class="horizontal-line "></div>
+                <li class="disabled"><a (click)="setupStep(2)"><i class="ri-file-copy-2-line" [ngClass]="registration.passedStep<2 ? 'icon-box-disabled': 'icon-box'"></i>
+                    <p class="mt-2 font-14px white-50" [ngClass]="registration.passedStep<2 ? 'white-50': 'text-light'">My Details</p></a></li>
+                    <div class="horizontal-line "></div>
+                <li class="disabled"><a href='#'><i class="ri-bank-card-line" [ngClass]="registration.passedStep<3 ? 'icon-box-disabled': 'icon-box'"></i>
+                    <p class="mt-2 font-14px white-50" [ngClass]="registration.passedStep<3 ? 'white-50': 'text-light'">Add My Account</p></a></li>
+            </ul>
+</nav>
